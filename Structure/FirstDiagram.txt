@@ -1,0 +1,51 @@
+
+
+CLASSES
+
+Field {
+	Has-a : Chicken (2) ; GameObjects[] ; shape ; color;
+	createsPosition();
+}
+
+Position {
+	Has-a : int col ; int row ; 
+	getters();
+}	
+
+Chicken (2 instances - 2 players) {
+	Has-a : Position pos ; Movement enum ; image ; status : isAlive ; Keyboard event
+	move();	
+}
+
+CollisionDetecter {
+	Has-a : Position pos : GameObject : Chicken;
+	setIsAlive();
+	setCrashed();
+}
+
+GameObjectFactory {
+	Has-a : GameObjects[] ; Position
+	createsGameObjects(int level);
+}
+
+GameObject {
+	Has-a : Position ; Movement ; isCrashed
+	show();
+	hide();
+	move();
+	crash() - setter;
+}
+
+Steroids extends GameObject {
+	statusModifier()
+}
+
+Possible Enum {
+	Corn,
+	Mushroom,
+	IceCube
+}
+
+
+
+
