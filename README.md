@@ -1,2 +1,2 @@
-# chiken-boom
-Chiken boom project with simple graphics. 
+# chicken-boom
+Chicken boom project with simple graphics. 
