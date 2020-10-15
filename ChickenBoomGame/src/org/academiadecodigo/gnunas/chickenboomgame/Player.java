@@ -8,12 +8,11 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.awt.*;
 
-public abstract class Player implements KeyboardHandler{
+public abstract class Player {
 
     private Field field;
     private Rectangle chicken;
     private Color color;
-    public Keyboard keyboard = new Keyboard(this);
 
     public Player(Field field,Rectangle chicken, Color color) {
         this.field = field;

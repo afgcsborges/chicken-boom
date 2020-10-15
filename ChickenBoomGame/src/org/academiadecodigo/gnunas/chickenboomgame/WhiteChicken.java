@@ -9,7 +9,9 @@ import org.w3c.dom.css.Rect;
 
 public class WhiteChicken extends Player{
 
-    Keyboard keyboard = super.keyboard;
+    private boolean moving ;
+    private Movement direction;
+    //private stauts ...
 
     public WhiteChicken(Field field) {
         super(field, new Rectangle(490, 440, 20, 20), Color.BLACK);
@@ -17,45 +19,35 @@ public class WhiteChicken extends Player{
 
         //getChicken().fill();
         show();
-        KeyboardEvent keyboardEvent6 = new KeyboardEvent();
-        keyboardEvent6.setKey(KeyboardEvent.KEY_S);
-        keyboardEvent6.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent6);
 
-        KeyboardEvent keyboardEvent7 = new KeyboardEvent();
-        keyboardEvent7.setKey(KeyboardEvent.KEY_W);
-        keyboardEvent7.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent7);
-
-        KeyboardEvent keyboardEvent8 = new KeyboardEvent();
-        keyboardEvent8.setKey(KeyboardEvent.KEY_D);
-        keyboardEvent8.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent8);
-
-        KeyboardEvent keyboardEvent9 = new KeyboardEvent();
-        keyboardEvent9.setKey(KeyboardEvent.KEY_A);
-        keyboardEvent9.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent9);
     }
 
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_S)){
-            getChicken().translate(0,10);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_W)){
-            getChicken().translate(0,-10);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_D)){
-            getChicken().translate(10,0);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_A)){
-            getChicken().translate(-10,0);
+    public void move() {
+        if (moving) {
+            switch (direction) {
+                case LEFT:
+                    getChicken().translate(-10, 0);
+                    break;
+                case RIGHT:
+                    getChicken().translate(10, 0);
+                    break;
+                case DOWN:
+                    getChicken().translate(0, 10);
+                    break;
+                case UP:
+                    getChicken().translate(0, -10);
+                    break;
+
+            }
         }
     }
 
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
+    public void moveInDirection(Movement direction){
+        this.direction = direction;
+        moving = true;
+    }
 
+    public void stopMoving(){
+        moving = false;
     }
 }

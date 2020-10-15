@@ -8,7 +8,8 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 
 public class BlackChicken extends Player{
 
-    Keyboard keyboard = super.keyboard;
+    private boolean moving ;
+    private Movement direction;
 
 
     public BlackChicken(Field field) {
@@ -16,45 +17,36 @@ public class BlackChicken extends Player{
         //setChicken(new Rectangle(490, 440, 20, 20));
         //getChicken().fill();
         show();
-        KeyboardEvent keyboardEvent = new KeyboardEvent();
-        keyboardEvent.setKey(KeyboardEvent.KEY_DOWN);
-        keyboardEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent);
-
-        KeyboardEvent keyboardEvent2 = new KeyboardEvent();
-        keyboardEvent2.setKey(KeyboardEvent.KEY_UP);
-        keyboardEvent2.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent2);
-
-        KeyboardEvent keyboardEvent3 = new KeyboardEvent();
-        keyboardEvent3.setKey(KeyboardEvent.KEY_RIGHT);
-        keyboardEvent3.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent3);
-
-        KeyboardEvent keyboardEvent4 = new KeyboardEvent();
-        keyboardEvent4.setKey(KeyboardEvent.KEY_LEFT);
-        keyboardEvent4.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent4);
     }
 
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)){
-            getChicken().translate(0,10);
+    public void move(){
+        if(moving) {
+            switch (direction) {
+                case LEFT:
+                    getChicken().translate(-10, 0);
+                    break;
+                case RIGHT:
+                    getChicken().translate(10, 0);
+                    break;
+                case DOWN:
+                    getChicken().translate(0, 10);
+                    break;
+                case UP:
+                    getChicken().translate(0, -10);
+                    break;
+
+            }
         }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_UP)){
-            getChicken().translate(0,-10);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT)){
-            getChicken().translate(10,0);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)){
-            getChicken().translate(-10,0);
-        }
+
     }
 
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
+    public void moveInDirection(Movement direction){
+        this.direction = direction;
+        moving = true;
     }
+
+    public void stopMoving(){
+        moving = false;
+    }
+
 }
