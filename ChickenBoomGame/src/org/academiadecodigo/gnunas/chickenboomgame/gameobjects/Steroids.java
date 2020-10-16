@@ -1,6 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Steroids extends GameObjects {
 

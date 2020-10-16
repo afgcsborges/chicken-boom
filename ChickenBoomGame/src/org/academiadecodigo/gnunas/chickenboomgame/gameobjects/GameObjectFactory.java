@@ -26,13 +26,13 @@ public class GameObjectFactory {
         Movement startLocation = Movement.values()[(int)(Math.random() * Movement.values().length)];
         switch (startLocation){
             case UP:
-                return new Obstacles(Movement.DOWN,(int)((Math.random()*1260)+120),0,20);
+                return new Obstacles(Movement.DOWN,(int)((Math.random()*1260-40)+120),0,20);
             case DOWN:
-                return new Obstacles(Movement.UP,(int)((Math.random()*1260)+120),900-120,20);
+                return new Obstacles(Movement.UP,(int)((Math.random()*1260-40)+120),900-120,20);
             case LEFT:
-                return new Obstacles(Movement.RIGHT,0,(int)((Math.random()*660)+120),20);
+                return new Obstacles(Movement.RIGHT,0,(int)((Math.random()*660-40)+120),20);
             case RIGHT:
-                return new Obstacles(Movement.LEFT,1499-120,(int)((Math.random()*660)+120),20);
+                return new Obstacles(Movement.LEFT,1499-120,(int)((Math.random()*660-40)+120),20);
         }
         return null;
     }
@@ -46,6 +46,8 @@ public class GameObjectFactory {
                 return new Steroids(SteroidType.CORN);
             case MUSHROOM:
                 return new Steroids(SteroidType.MUSHROOM);
+            case SKULL:
+                return new Steroids(SteroidType.SKULL);
         }
         return null;
     }

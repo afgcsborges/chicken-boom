@@ -6,7 +6,8 @@ public enum SteroidType {
 
     CORN(Color.YELLOW),
     MUSHROOM(Color.RED),
-    ICE(Color.CYAN);
+    ICE(Color.CYAN),
+    SKULL(Color.GREEN);
 
     private Color color;
 
