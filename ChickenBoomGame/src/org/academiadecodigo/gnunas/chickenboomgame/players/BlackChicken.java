@@ -1,29 +1,26 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.players;
 
+import org.academiadecodigo.gnunas.chickenboomgame.Field;
+import org.academiadecodigo.gnunas.chickenboomgame.Movement;
+import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.w3c.dom.css.Rect;
 
-public class WhiteChicken extends Player{
+public class BlackChicken extends Player {
 
     private boolean moving ;
     private Movement direction;
-    //private stauts ...
 
-    public WhiteChicken(Field field) {
-        super(field, new Rectangle(490, 440, 20, 20), Color.BLACK);
+
+    public BlackChicken(Field field) {
+        super(field, new Rectangle(990, 440, 20, 20), Color.GREEN);
         //setChicken(new Rectangle(490, 440, 20, 20));
-
         //getChicken().fill();
         show();
-
     }
 
-    public void move() {
-        if (moving) {
+    public void move(){
+        if(moving) {
             switch (direction) {
                 case LEFT:
                     getChicken().translate(-10, 0);
@@ -40,6 +37,7 @@ public class WhiteChicken extends Player{
 
             }
         }
+
     }
 
     public void moveInDirection(Movement direction){
@@ -50,4 +48,5 @@ public class WhiteChicken extends Player{
     public void stopMoving(){
         moving = false;
     }
+
 }

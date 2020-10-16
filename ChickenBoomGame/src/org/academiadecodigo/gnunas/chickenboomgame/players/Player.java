@@ -1,5 +1,6 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.players;
 
+import org.academiadecodigo.gnunas.chickenboomgame.Field;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;

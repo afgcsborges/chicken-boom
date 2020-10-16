@@ -1,5 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame;
 
+import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
+import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

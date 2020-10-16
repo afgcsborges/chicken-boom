@@ -1,10 +1,8 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
-import org.academiadecodigo.simplegraphics.graphics.Shape;
 
-public class Steroids extends GameObjects{
+public class Steroids extends GameObjects {
 
     private SteroidType type;
     private Ellipse steroid;

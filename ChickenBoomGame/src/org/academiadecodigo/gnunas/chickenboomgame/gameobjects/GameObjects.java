@@ -1,5 +1,6 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
+import org.academiadecodigo.gnunas.chickenboomgame.Movement;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 
