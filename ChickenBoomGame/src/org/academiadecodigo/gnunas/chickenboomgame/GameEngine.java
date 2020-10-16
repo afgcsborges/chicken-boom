@@ -34,6 +34,9 @@ public class GameEngine {
 
 
     public void init() throws  InterruptedException{
+
+        Thread.sleep(2000);
+
         while(true) {
 
             Thread.sleep(50);

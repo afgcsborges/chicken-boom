@@ -2,27 +2,16 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Field {
 
-    private Rectangle field;
+    private Picture field;
 
     public Field(){
-        field = new Rectangle(0,0,1500,900);
-        field.setColor(Color.GREEN);
-        field.fill();
-        Rectangle innerField = new Rectangle(120,120,1260,660);
-        innerField.setColor(Color.GRAY);
-        innerField.fill();
-    }
+        field = new Picture(0,0,"resources/images/gamearena.png");
+        field.draw();
 
-    public int getCols(){
-        return field.getWidth();
     }
-
-    public int getWidth(){
-        return field.getHeight();
-    }
-
 
 }
