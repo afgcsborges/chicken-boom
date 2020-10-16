@@ -2,7 +2,6 @@ package org.academiadecodigo.gnunas.chickenboomgame.players;
 
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
 import org.academiadecodigo.gnunas.chickenboomgame.Movement;
-import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
