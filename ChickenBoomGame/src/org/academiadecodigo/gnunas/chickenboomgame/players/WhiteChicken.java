@@ -14,7 +14,7 @@ public class WhiteChicken extends Player {
     private int speed;
 
     public WhiteChicken(Field field) {
-        super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/chickenStandingDown.png"));
+        super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/whitechickendown.png"));
         crashed = false;
         this.speed = 10;
         this.direction = Movement.DOWN;
