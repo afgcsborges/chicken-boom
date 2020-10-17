@@ -50,5 +50,9 @@ public abstract class Player {
     public  int getHeight() {
         return chicken.getHeight();
     }
+
+    public Field getField() {
+        return field;
+    }
 }
 
