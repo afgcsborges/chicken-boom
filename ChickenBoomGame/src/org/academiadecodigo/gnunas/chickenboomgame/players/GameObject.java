@@ -1,23 +1,24 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.players;
 
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
 
-public abstract class GameObjects {
+public abstract class GameObject {
 
     private Shape shape;
     private Color color;
     private boolean moving = true;
     private Movement direction;
 
-    public GameObjects(Shape shape, Color color, Movement direction){
+    public GameObject(Shape shape, Color color, Movement direction){
         this.shape = shape;
         this.color = color;
         this.direction = direction;
 
     }
 
-    public GameObjects(Shape shape,Color color){
+    public GameObject(Shape shape, Color color){
         moving = false;
         this.shape = shape;
         this.color = color;

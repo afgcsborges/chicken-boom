@@ -1,26 +1,30 @@
-package org.academiadecodigo.gnunas.chickenboomgame;
+package org.academiadecodigo.gnunas.chickenboomgame.players;
 
+import org.academiadecodigo.gnunas.chickenboomgame.Field;
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 
-public class BlackChicken extends Player{
+public class WhiteChicken extends Player {
 
     private boolean moving ;
     private Movement direction;
+    private boolean crashed;
+    //private stauts ...
 
-
-    public BlackChicken(Field field) {
-        super(field, new Rectangle(990, 440, 20, 20), Color.GREEN);
+    public WhiteChicken(Field field) {
+        super(field, new Rectangle(490, 440, 20, 20), Color.BLACK);
+        crashed = false;
         //setChicken(new Rectangle(490, 440, 20, 20));
+
         //getChicken().fill();
         show();
+
+
     }
 
-    public void move(){
-        if(moving) {
+    public void move() {
+        if (moving) {
             switch (direction) {
                 case LEFT:
                     getChicken().translate(-10, 0);
@@ -37,7 +41,6 @@ public class BlackChicken extends Player{
 
             }
         }
-
     }
 
     public void moveInDirection(Movement direction){
@@ -45,8 +48,17 @@ public class BlackChicken extends Player{
         moving = true;
     }
 
-    public void stopMoving(){
+    public void stopMoving()
+    {
         moving = false;
     }
 
+    private void setCrashed() {
+
+        crashed = true;
+    }
+
+    private boolean isCrashed() {
+        return crashed;
+    }
 }
