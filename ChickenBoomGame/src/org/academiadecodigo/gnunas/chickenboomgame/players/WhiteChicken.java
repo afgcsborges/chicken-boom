@@ -14,7 +14,7 @@ public class WhiteChicken extends Player {
     private int speed;
 
     public WhiteChicken(Field field) {
-        super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/whitechicken/whitechickendown.png"));
+        super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/whitechicken/down/whitechickendown.png"));
         crashed = false;
         this.speed = 10;
         this.direction = Movement.DOWN;
@@ -50,6 +50,7 @@ public class WhiteChicken extends Player {
 
     public void moveInDirection(Movement direction){
         this.direction = direction;
+        refreshImage();
         moving = true;
     }
 
@@ -96,16 +97,16 @@ public class WhiteChicken extends Player {
     private void refreshImage(){
         switch (direction){
             case UP:
-                getChicken().load("resources/images/whitechicken/whitechickenup.png");
+                getChicken().load("resources/images/whitechicken/up/whitechickenup.png");
                 break;
             case DOWN:
-                getChicken().load("resources/images/whitechicken/whitechickendown.png");
+                getChicken().load("resources/images/whitechicken/down/whitechickendown.png");
                 break;
             case LEFT:
-                getChicken().load("resources/images/whitechicken/whitechickenleft.png");
+                getChicken().load("resources/images/whitechicken/left/whitechickenleft.png");
                 break;
             case RIGHT:
-                getChicken().load("resources/images/whitechicken/whitechickenright.png");
+                getChicken().load("resources/images/whitechicken/right/whitechickenright.png");
                 break;
         }
     }

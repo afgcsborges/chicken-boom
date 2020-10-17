@@ -14,7 +14,7 @@ public class BlackChicken extends Player {
     private int speed;
 
     public BlackChicken(Field field) {
-        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/blackchicken/blackchickendown.png"));
+        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/blackchicken/down/blackchickendown.png"));
         status = SteroidType.CORN;
         this.speed = 10;
         this.direction = Movement.DOWN;
@@ -94,16 +94,16 @@ public class BlackChicken extends Player {
     private void refreshImage(){
         switch (direction){
             case UP:
-                getChicken().load("resources/images/blackchicken/blackchickenup.png");
+                getChicken().load("resources/images/blackchicken/up/blackchickenup.png");
                 break;
             case DOWN:
-                getChicken().load("resources/images/blackchicken/blackchickendown.png");
+                getChicken().load("resources/images/blackchicken/down/blackchickendown.png");
                 break;
             case LEFT:
-                getChicken().load("resources/images/blackchicken/blackchickenleft.png");
+                getChicken().load("resources/images/blackchicken/left/blackchickenleft.png");
                 break;
             case RIGHT:
-                getChicken().load("resources/images/blackchicken/blackchickenright.png");
+                getChicken().load("resources/images/blackchicken/right/blackchickenright.png");
                 break;
         }
     }
