@@ -3,6 +3,7 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObject;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjectFactory;
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
+import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 
 import java.util.LinkedList;
@@ -16,6 +17,7 @@ public class GameEngine {
     private int levelController;
     private int currentLevel;
     private LinkedList<GameObject> gameObjects;
+    private CollisionDetector collisionDetector;
 
 
 
@@ -27,6 +29,7 @@ public class GameEngine {
         levelController = 0;
         currentLevel = 0;
         gameObjects = new LinkedList<>();
+        collisionDetector = new CollisionDetector(gameObjects,new Player[] {player1,player2});
 
     }
 
@@ -37,7 +40,7 @@ public class GameEngine {
 
         Thread.sleep(2000);
 
-        while(true) {
+        while(!gameOver()) {
 
             Thread.sleep(50);
 
@@ -51,9 +54,9 @@ public class GameEngine {
             player2.move();
             moveAllGameObjects();
 
+            checkForPlayerCollision();
+
             levelController ++;
-
-
 
         }
     }
@@ -62,5 +65,15 @@ public class GameEngine {
         for (GameObject object : gameObjects){
             object.move();
         }
+    }
+
+    private boolean gameOver(){
+        return player1.isCrashed() || player2.isCrashed() ;
+    }
+
+    private void checkForPlayerCollision(){
+        collisionDetector.checkCollision(player1);
+        collisionDetector.checkCollision(player2);
+
     }
 }

@@ -9,18 +9,16 @@ public class WhiteChicken extends Player {
 
     private boolean moving ;
     private Movement direction;
-    private boolean crashed;
     private SteroidType status;
     private int speed;
 
     public WhiteChicken(Field field) {
+
         super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/whitechicken/down/whitechickendown.png"));
-        crashed = false;
+        status = SteroidType.CORN;
         this.speed = 10;
         this.direction = Movement.DOWN;
         show();
-
-
     }
 
     public void move() {
@@ -57,11 +55,6 @@ public class WhiteChicken extends Player {
     public void stopMoving()
     {
         moving = false;
-    }
-
-
-    public boolean isCrashed() {
-        return crashed;
     }
 
     private boolean reachedEdge(){
@@ -110,4 +103,5 @@ public class WhiteChicken extends Player {
                 break;
         }
     }
+
 }
