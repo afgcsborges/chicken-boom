@@ -5,6 +5,7 @@ import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class BlackChicken extends Player {
 
@@ -15,7 +16,7 @@ public class BlackChicken extends Player {
 
 
     public BlackChicken(Field field) {
-        super(field, new Rectangle(990, 440, 20, 20), Color.GREEN);
+        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/chickenStandingDown.png"));
         status = SteroidType.CORN;
         this.speed = 10;
         this.direction = Movement.DOWN;

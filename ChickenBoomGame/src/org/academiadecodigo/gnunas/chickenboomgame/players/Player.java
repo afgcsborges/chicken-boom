@@ -1,40 +1,31 @@
 package org.academiadecodigo.gnunas.chickenboomgame.players;
 
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import java.awt.*;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public abstract class Player {
 
     private Field field;
-    private Rectangle chicken;
-    private Color color;
+    private Picture chicken;
     private boolean crashed;
 
-    public Player(Field field,Rectangle chicken, Color color) {
+    public Player(Field field, Picture chicken) {
         this.field = field;
         this.chicken = chicken;
-        this.color = color;
-        chicken.setColor(color);
 
         crashed = false;
 
     }
 
     public void show(){
-        chicken.fill();
+        chicken.draw();
     }
 
     public void hide(){
         chicken.delete();
     }
 
-    public Rectangle getChicken() {
+    public Picture getChicken() {
         return chicken;
     }
 
