@@ -14,12 +14,15 @@ public abstract class Player {
     private Field field;
     private Rectangle chicken;
     private Color color;
+    private boolean crashed;
 
     public Player(Field field,Rectangle chicken, Color color) {
         this.field = field;
         this.chicken = chicken;
         this.color = color;
         chicken.setColor(color);
+
+        crashed = false;
 
     }
 
@@ -49,6 +52,22 @@ public abstract class Player {
 
     public  int getHeight() {
         return chicken.getHeight();
+    }
+
+    public int getXtoWidth() {
+        return getX() + getWidth();
+    }
+
+    public int getYtoHeight() {
+        return getY() + getHeight();
+    }
+
+    public void setCrashed() {
+        crashed = true;
+    }
+
+    public boolean isCrashed() {
+        return crashed;
     }
 }
 

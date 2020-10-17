@@ -48,6 +48,14 @@ public abstract class GameObject {
         return shape.getWidth();
     }
 
+    public int getXtoWith() {
+        return getX() + getWidth();
+    }
+
+    public int getYtoHeight() {
+        return getY() + getHeight();
+    }
+
     public boolean isMoving() {
         return moving;
     }

@@ -2,6 +2,7 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Obstacle;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObject;
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Steroid;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 
 import java.util.LinkedList;
@@ -14,27 +15,54 @@ public class CollisionDetector {
     public CollisionDetector(LinkedList<GameObject> objects, Player[] players) {
 
         this.objects = objects;
-        this.players = players ;
+        this.players = players;
     }
 
-    /*public void checkCollision(Player chicken) {
 
-        for (GameObject object: objects) {
+    public boolean checkRange(GameObject object, Player player) {
 
-            if (!(object instanceof Obstacle)) {
+        if ((player.getX() >= object.getX() && player.getX() <= object.getXtoWith())
+                || (player.getXtoWidth() <= object.getXtoWith() && player.getXtoWidth() >= object.getX())) {
+
+            return (player.getY() >= object.getY() && player.getY() <= object.getYtoHeight())
+                    || (player.getYtoHeight() <= object.getYtoHeight() && player.getYtoHeight() >= object.getY());
+        }
+
+        if ((player.getY() >= object.getY() && player.getY() <= object.getYtoHeight())
+                || (player.getYtoHeight() <= object.getYtoHeight() && player.getYtoHeight() >= object.getY())) {
+
+            return (player.getX() >= object.getX() && player.getX() <= object.getXtoWith())
+                    || (player.getXtoWidth() <= object.getXtoWith() && player.getXtoWidth() >= object.getX());
+        }
+
+        return false;
+
+    }
+
+    public void checkCollision(Player player) {
+
+        for (GameObject object : objects) {
+
+            if (object instanceof Steroid) {
+
+                GameObject steroid = (Steroid) object;
+
                 continue;
+                //checkRange(steroid, player)
+                //implementar
             }
 
             GameObject obstacle = (Obstacle) object;
 
-            if((chicken.getX()+chicken.getWidth()) > obstacle.getX() && < obstacle.getHeight() > )
+            if (checkRange(obstacle, player)) {
 
-
+                player.setCrashed();
+            }
 
 
         }
 
-    }*/
+    }
 
 
 }
