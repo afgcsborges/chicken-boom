@@ -1,7 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame;
 
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObject;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjectFactory;
-import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjects;
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 
@@ -15,7 +15,7 @@ public class GameEngine {
     private GameController gameController;
     private int levelController;
     private int currentLevel;
-    private LinkedList<GameObjects> gameObjects;
+    private LinkedList<GameObject> gameObjects;
 
 
 
@@ -59,7 +59,7 @@ public class GameEngine {
     }
 
     private void moveAllGameObjects(){
-        for (GameObjects object : gameObjects){
+        for (GameObject object : gameObjects){
             object.move();
         }
     }

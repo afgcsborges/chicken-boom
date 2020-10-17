@@ -1,16 +1,14 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.gnunas.chickenboomgame.Movement;
-import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjects;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Obstacles extends GameObjects {
+public class Obstacle extends GameObject {
 
     private int speed;
     private Rectangle obstacle;
 
-    public Obstacles(Movement direction, int x, int y, int speed) {
+    public Obstacle(Movement direction, int x, int y, int speed) {
         super(new Rectangle(x,y,(int)((Math.random()*80)+40),(int)((Math.random()*80)+40)), Color.DARK_GRAY, direction);
         this.speed = speed;
         obstacle = (Rectangle) getShape();

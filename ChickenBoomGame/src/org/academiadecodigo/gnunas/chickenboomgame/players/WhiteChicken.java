@@ -1,8 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame.players;
 
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
-import org.academiadecodigo.gnunas.chickenboomgame.Movement;
-import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
@@ -10,14 +9,17 @@ public class WhiteChicken extends Player {
 
     private boolean moving ;
     private Movement direction;
+    private boolean crashed;
     //private stauts ...
 
     public WhiteChicken(Field field) {
         super(field, new Rectangle(490, 440, 20, 20), Color.BLACK);
+        crashed = false;
         //setChicken(new Rectangle(490, 440, 20, 20));
 
         //getChicken().fill();
         show();
+
 
     }
 
@@ -46,7 +48,17 @@ public class WhiteChicken extends Player {
         moving = true;
     }
 
-    public void stopMoving(){
+    public void stopMoving()
+    {
         moving = false;
+    }
+
+    private void setCrashed() {
+
+        crashed = true;
+    }
+
+    private boolean isCrashed() {
+        return crashed;
     }
 }

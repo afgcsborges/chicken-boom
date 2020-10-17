@@ -34,5 +34,21 @@ public abstract class Player {
     public Rectangle getChicken() {
         return chicken;
     }
+
+    public int getX() {
+        return chicken.getX();
+    }
+
+    public int getY() {
+        return chicken.getY();
+    }
+
+    public int getWidth() {
+        return chicken.getWidth();
+    }
+
+    public  int getHeight() {
+        return chicken.getHeight();
+    }
 }
 
