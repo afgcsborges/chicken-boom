@@ -14,4 +14,11 @@ public class Field {
 
     }
 
+    public int getWidth(){
+        return field.getWidth();
+    }
+
+    public int getHeight(){
+        return field.getHeight();
+    }
 }

@@ -69,5 +69,9 @@ public abstract class Player {
     public boolean isCrashed() {
         return crashed;
     }
+
+    public Field getField(){
+        return field;
+    }
 }
 
