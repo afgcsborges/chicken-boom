@@ -6,10 +6,10 @@ import java.util.LinkedList;
 
 public class GameObjectFactory {
 
-    public static void generateObjects(int gameLevel, LinkedList<GameObjects> gameObjectsList){
+    public static void generateObjects(int gameLevel, LinkedList<GameObject> gameObjectsList){
 
         if (gameLevel%5 == 0){
-            for (GameObjects gameObjects : gameObjectsList){
+            for (GameObject gameObjects : gameObjectsList){
                 gameObjects.delete();
             }
             gameObjectsList.clear();
@@ -22,32 +22,32 @@ public class GameObjectFactory {
 
     }
 
-    public static Obstacles generateRandomObstacle(){
+    public static Obstacle generateRandomObstacle(){
         Movement startLocation = Movement.values()[(int)(Math.random() * Movement.values().length)];
         switch (startLocation){
             case UP:
-                return new Obstacles(Movement.DOWN,(int)((Math.random()*1260-40)+120),0,20);
+                return new Obstacle(Movement.DOWN,(int)((Math.random()*1260-40)+120),0,20);
             case DOWN:
-                return new Obstacles(Movement.UP,(int)((Math.random()*1260-40)+120),900-120,20);
+                return new Obstacle(Movement.UP,(int)((Math.random()*1260-40)+120),900-120,20);
             case LEFT:
-                return new Obstacles(Movement.RIGHT,0,(int)((Math.random()*660-40)+120),20);
+                return new Obstacle(Movement.RIGHT,0,(int)((Math.random()*660-40)+120),20);
             case RIGHT:
-                return new Obstacles(Movement.LEFT,1499-120,(int)((Math.random()*660-40)+120),20);
+                return new Obstacle(Movement.LEFT,1499-120,(int)((Math.random()*660-40)+120),20);
         }
         return null;
     }
 
-    public static Steroids generateRandomSteroid(){
+    public static Steroid generateRandomSteroid(){
         SteroidType random = SteroidType.values()[(int)(Math.random()*SteroidType.values().length)];
         switch (random){
             case ICE:
-                return new Steroids(SteroidType.ICE);
+                return new Steroid(SteroidType.ICE);
             case CORN:
-                return new Steroids(SteroidType.CORN);
+                return new Steroid(SteroidType.CORN);
             case MUSHROOM:
-                return new Steroids(SteroidType.MUSHROOM);
+                return new Steroid(SteroidType.MUSHROOM);
             case SKULL:
-                return new Steroids(SteroidType.SKULL);
+                return new Steroid(SteroidType.SKULL);
         }
         return null;
     }

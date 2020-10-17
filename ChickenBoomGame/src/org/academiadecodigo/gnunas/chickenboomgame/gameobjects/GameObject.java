@@ -1,4 +1,4 @@
-package org.academiadecodigo.gnunas.chickenboomgame.players;
+package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.simplegraphics.graphics.Color;
