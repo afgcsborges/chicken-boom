@@ -3,20 +3,18 @@ package org.academiadecodigo.gnunas.chickenboomgame.players;
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class BlackChicken extends Player {
 
     private boolean moving ;
     private Movement direction;
+    private boolean crashed;
     private SteroidType status;
     private int speed;
 
-
     public BlackChicken(Field field) {
-        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/whitechickendown.png"));
+        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/blackchicken/blackchickendown.png"));
         status = SteroidType.CORN;
         this.speed = 10;
         this.direction = Movement.DOWN;
@@ -51,11 +49,16 @@ public class BlackChicken extends Player {
 
     public void moveInDirection(Movement direction){
         this.direction = direction;
+        refreshImage();
         moving = true;
     }
 
     public void stopMoving(){
         moving = false;
+    }
+
+    public boolean isCrashed() {
+        return crashed;
     }
 
     private boolean reachedEdge(){
@@ -88,4 +91,20 @@ public class BlackChicken extends Player {
         return false;
     }
 
+    private void refreshImage(){
+        switch (direction){
+            case UP:
+                getChicken().load("resources/images/blackchicken/blackchickenup.png");
+                break;
+            case DOWN:
+                getChicken().load("resources/images/blackchicken/blackchickendown.png");
+                break;
+            case LEFT:
+                getChicken().load("resources/images/blackchicken/blackchickenleft.png");
+                break;
+            case RIGHT:
+                getChicken().load("resources/images/blackchicken/blackchickenright.png");
+                break;
+        }
+    }
 }
