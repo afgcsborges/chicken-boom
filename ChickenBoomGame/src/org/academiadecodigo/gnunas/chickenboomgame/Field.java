@@ -9,7 +9,7 @@ public class Field {
     private Picture field;
 
     public Field(){
-        field = new Picture(0,0,"resources/images/gamearena.png");
+        field = new Picture(0,0,"resources/images/newgamearena.png");
         field.draw();
 
     }
