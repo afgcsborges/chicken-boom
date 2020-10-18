@@ -5,6 +5,9 @@ import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjectFactory
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 
@@ -65,6 +68,18 @@ public class GameEngine {
             levelController ++;
             loopEnd = System.currentTimeMillis();
 
+        }
+
+        showResult();
+    }
+
+    private void showResult() {
+        String roastedChickenPath = "resources/images/deadchicken/roastedchicken.png";
+        if (player1.isCrashed()) {
+           player1.setPicture(roastedChickenPath);
+        }
+        if (player2.isCrashed()) {
+            player2.setPicture(roastedChickenPath);
         }
     }
 
