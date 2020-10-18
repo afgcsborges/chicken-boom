@@ -83,12 +83,15 @@ public class GameEngine {
         }
 
         String image = "tie.png";
+        player1.hide();
+        player2.hide();
+
         if(!player1.isCrashed()) {
             image = "whitechickenwin.png";
-            player1.hide();
+            player2.show();
         } else if (!player2.isCrashed()) {
             image = "blackchickenwin.png";
-            player2.hide();
+            player1.show();
         }
         Picture result = new Picture(0, 0, "resources/images/matchresult/" + image);
         result.draw();
