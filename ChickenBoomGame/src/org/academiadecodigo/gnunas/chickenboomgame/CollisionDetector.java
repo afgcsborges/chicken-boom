@@ -58,7 +58,6 @@ public class CollisionDetector {
                     }
                     object.delete();
 
-
                     if (steroid.getType() == SteroidType.ICE || steroid.getType() == SteroidType.SKULL) {
                         if (player instanceof WhiteChicken) {
                             BlackChicken player2 = (BlackChicken) players[1];
