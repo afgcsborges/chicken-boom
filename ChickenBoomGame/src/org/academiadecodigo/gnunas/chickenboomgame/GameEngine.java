@@ -59,7 +59,7 @@ public class GameEngine {
             player2.move();
             moveAllGameObjects();
 
-            //checkForPlayerCollision();
+            checkForPlayerCollision();
 
             levelController ++;
             loopEnd = System.currentTimeMillis();
