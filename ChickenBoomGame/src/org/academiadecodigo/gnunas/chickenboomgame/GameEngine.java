@@ -81,6 +81,18 @@ public class GameEngine {
         if (player2.isCrashed()) {
             player2.setPicture(roastedChickenPath);
         }
+
+        String image = "tie.png";
+        if(!player1.isCrashed()) {
+            image = "whitechickenwin.png";
+            player1.hide();
+        } else if (!player2.isCrashed()) {
+            image = "blackchickenwin.png";
+            player2.hide();
+        }
+        Picture result = new Picture(0, 0, "resources/images/matchresult/" + image);
+        result.draw();
+
     }
 
     private void moveAllGameObjects(){
