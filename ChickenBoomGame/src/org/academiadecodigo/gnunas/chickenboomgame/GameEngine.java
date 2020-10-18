@@ -7,6 +7,7 @@ import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.LinkedList;
 
@@ -66,16 +67,20 @@ public class GameEngine {
     }
 
     private void showResult() {
-        Rectangle winner = new Rectangle(200, 200 , 80, 80);
-        winner.setColor(Color.RED);
-        if(!player1.isCrashed()) {
-           //player1 wins!
-            winner.setColor(Color.BLACK);
-        } else if (!player2.isCrashed()) {
-           //player2 wins!
-            winner.setColor(Color.WHITE);
+        if (player1.isCrashed()) {
+           player1.setPicture("resource/images/deadchicken/deadchicken.png");
         }
-        winner.draw();
+        if (player2.isCrashed()) {
+            player2.setPicture("resource/images/deadchicken/deadchicken.png");
+        }
+        String image = "draw.png";
+        if(!player1.isCrashed()) {
+            image = "whitechickenwins.png";
+        } else if (!player2.isCrashed()) {
+            image = "blackchickenwins.png";
+        }
+        Picture result = new Picture(600,420,"resources/images/" + image);
+        result.draw();
     }
 
     private void moveAllGameObjects(){

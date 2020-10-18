@@ -64,5 +64,9 @@ public abstract class Player {
     public Field getField(){
         return field;
     }
+
+    public void setPicture(String imageFile) {
+        chicken = new Picture(getX(), getY(), imageFile);
+    }
 }
 
