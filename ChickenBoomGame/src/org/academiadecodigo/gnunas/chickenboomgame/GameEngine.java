@@ -5,6 +5,8 @@ import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjectFactory
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import java.util.LinkedList;
 
@@ -59,6 +61,21 @@ public class GameEngine {
             levelController ++;
 
         }
+
+        showResult();
+    }
+
+    private void showResult() {
+        Rectangle winner = new Rectangle(200, 200 , 80, 80);
+        winner.setColor(Color.RED);
+        if(!player1.isCrashed()) {
+           //player1 wins!
+            winner.setColor(Color.BLACK);
+        } else if (!player2.isCrashed()) {
+           //player2 wins!
+            winner.setColor(Color.WHITE);
+        }
+        winner.draw();
     }
 
     private void moveAllGameObjects(){
