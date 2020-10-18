@@ -8,7 +8,7 @@ public class GameObjectFactory {
 
     public static void generateObjects(int gameLevel, LinkedList<GameObject> gameObjectsList){
 
-        if (gameLevel%5 == 0){
+        if (gameLevel%3 == 0){
             for (GameObject gameObjects : gameObjectsList){
                 gameObjects.delete();
             }

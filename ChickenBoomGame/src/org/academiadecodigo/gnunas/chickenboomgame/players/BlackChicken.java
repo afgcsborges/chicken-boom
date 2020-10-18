@@ -21,30 +21,69 @@ public class BlackChicken extends Player {
         show();
     }
 
-    public void move(){
+    public void setStatus(SteroidType type) {
+        status = type;
+        switch (type) {
+            case ICE:
+                speed = (int) (speed * 0.5);
+                break;
 
-        if (reachedEdge()){
+            case CORN:
+                speed = (int) (speed * 1.5);
+                break;
+
+            case MUSHROOM:
+                int random = (int) (Math.random()*2);
+                if( random == 1) {
+                    getChicken().grow(10, 10);
+                    break;
+                }
+                getChicken().grow(-10,-10);
+                break;
+        }
+    }
+
+    public void move() {
+
+        if(reachedEdge()){
             moving = false;
         }
 
-        if(moving) {
+        if(moving && status == SteroidType.SKULL) {
             switch (direction) {
                 case LEFT:
-                    getChicken().translate(-speed, 0);
-                    break;
-                case RIGHT:
                     getChicken().translate(speed, 0);
-                    break;
+                    return;
+                case RIGHT:
+                    getChicken().translate(-speed, 0);
+                    return;
                 case DOWN:
-                    getChicken().translate(0, speed);
-                    break;
-                case UP:
                     getChicken().translate(0, -speed);
-                    break;
+                    return;
+                case UP:
+                    getChicken().translate(0, speed);
+                    return;
 
             }
         }
 
+        if (moving) {
+            switch (direction) {
+                case LEFT:
+                    getChicken().translate(-speed, 0);
+                    return;
+                case RIGHT:
+                    getChicken().translate(speed, 0);
+                    return;
+                case DOWN:
+                    getChicken().translate(0, speed);
+                    return;
+                case UP:
+                    getChicken().translate(0, -speed);
+                    return;
+
+            }
+        }
     }
 
     public void moveInDirection(Movement direction){
@@ -53,7 +92,8 @@ public class BlackChicken extends Player {
         moving = true;
     }
 
-    public void stopMoving(){
+    public void stopMoving()
+    {
         moving = false;
     }
 
