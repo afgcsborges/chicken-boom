@@ -10,7 +10,7 @@ public class Steroid extends GameObject {
 
 
     public Steroid(SteroidType type) {
-        super(new Ellipse((int)((Math.random()*1260)+120-30),(int)((Math.random()*660)+120-30), 30,30), type.getColor());
+        super(new Ellipse((int)((Math.random()*1260)+120-30),(int)((Math.random()*660)+120-30), 30,30));
         this.type = type;
         steroid = (Ellipse) getShape();
         steroid.setColor(type.getColor());
