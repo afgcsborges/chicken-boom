@@ -46,6 +46,7 @@ public class GameEngine {
         while(!gameOver()) {
 
             long elapsedLoopTime = loopEnd-loopStart;
+            elapsedLoopTime = elapsedLoopTime > 50 ? 50 : elapsedLoopTime;
 
             Thread.sleep(50-(elapsedLoopTime));
             loopStart = System.currentTimeMillis();
