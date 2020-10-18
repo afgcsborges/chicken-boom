@@ -6,6 +6,7 @@ public class Steroid extends GameObject {
 
     private SteroidType type;
     private Ellipse steroid;
+    private boolean used;
 
 
     public Steroid(SteroidType type) {
@@ -25,5 +26,19 @@ public class Steroid extends GameObject {
     @Override
     public void show() {
 
+    }
+
+    public SteroidType getType() {
+        return type;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    @Override
+    public void delete() {
+        super.delete();
+        used = true;
     }
 }
