@@ -1,10 +1,9 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Shape;
+import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
 
-public abstract class GameObject {
+public abstract class GameObject implements Positionable {
 
     private Shape shape;
     private boolean moving = true;
@@ -29,10 +28,12 @@ public abstract class GameObject {
         shape.delete();
     }
 
+    @Override
     public int getX(){
         return shape.getX();
     }
 
+    @Override
     public int getY(){
         return  shape.getY();
     }
@@ -45,10 +46,12 @@ public abstract class GameObject {
         return shape.getWidth();
     }
 
-    public int getXtoWith() {
+    @Override
+    public int getXtoWidth() {
         return getX() + getWidth();
     }
 
+    @Override
     public int getYtoHeight() {
         return getY() + getHeight();
     }

@@ -3,8 +3,9 @@ package org.academiadecodigo.gnunas.chickenboomgame.players;
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
 
-public abstract class Player {
+public abstract class Player implements Positionable {
 
     private Field field;
     private Picture chicken;
@@ -30,10 +31,12 @@ public abstract class Player {
         return chicken;
     }
 
+    @Override
     public int getX() {
         return chicken.getX();
     }
 
+    @Override
     public int getY() {
         return chicken.getY();
     }
@@ -46,10 +49,12 @@ public abstract class Player {
         return chicken.getHeight();
     }
 
+    @Override
     public int getXtoWidth() {
         return getX() + getWidth();
     }
 
+    @Override
     public int getYtoHeight() {
         return getY() + getHeight();
     }

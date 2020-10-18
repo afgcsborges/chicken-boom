@@ -22,20 +22,20 @@ public class CollisionDetector {
     }
 
 
-    public boolean checkRange(GameObject object, Player player) {
+    public boolean checkRange(Positionable object1, Positionable object2) {
 
-        if ((player.getX() >= object.getX() && player.getX() <= object.getXtoWith())
-                || (player.getXtoWidth() <= object.getXtoWith() && player.getXtoWidth() >= object.getX())) {
+        if ((object2.getX() >= object1.getX() && object2.getX() <= object1.getXtoWidth())
+                || (object2.getXtoWidth() <= object1.getXtoWidth() && object2.getXtoWidth() >= object1.getX())) {
 
-            return (player.getY() >= object.getY() && player.getY() <= object.getYtoHeight())
-                    || (player.getYtoHeight() <= object.getYtoHeight() && player.getYtoHeight() >= object.getY());
+            return (object2.getY() >= object1.getY() && object2.getY() <= object1.getYtoHeight())
+                    || (object2.getYtoHeight() <= object1.getYtoHeight() && object2.getYtoHeight() >= object1.getY());
         }
 
-        if ((player.getY() >= object.getY() && player.getY() <= object.getYtoHeight())
-                || (player.getYtoHeight() <= object.getYtoHeight() && player.getYtoHeight() >= object.getY())) {
+        if ((object2.getY() >= object1.getY() && object2.getY() <= object1.getYtoHeight())
+                || (object2.getYtoHeight() <= object1.getYtoHeight() && object2.getYtoHeight() >= object1.getY())) {
 
-            return (player.getX() >= object.getX() && player.getX() <= object.getXtoWith())
-                    || (player.getXtoWidth() <= object.getXtoWith() && player.getXtoWidth() >= object.getX());
+            return (object2.getX() >= object1.getX() && object2.getX() <= object1.getXtoWidth())
+                    || (object2.getXtoWidth() <= object1.getXtoWidth() && object2.getXtoWidth() >= object1.getX());
         }
 
         return false;
@@ -92,10 +92,11 @@ public class CollisionDetector {
 
                 player.setCrashed();
             }
-
-
         }
-
+        if (players.length == 2 && checkRange(players[0], players[1])) {
+            players[0].setCrashed();
+            players[1].setCrashed();
+        }
     }
 
 

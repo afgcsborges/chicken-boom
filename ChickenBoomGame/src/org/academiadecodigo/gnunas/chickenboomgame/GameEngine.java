@@ -53,14 +53,13 @@ public class GameEngine {
 
             Thread.sleep(50-(elapsedLoopTime));
             loopStart = System.currentTimeMillis();
+            player1.move();
+            player2.move();
             if (levelController % 75 == 0){
 
                 currentLevel++;
                 GameObjectFactory.generateObjects(currentLevel,gameObjects);
             }
-
-            player1.move();
-            player2.move();
             moveAllGameObjects();
 
             checkForPlayerCollision();
