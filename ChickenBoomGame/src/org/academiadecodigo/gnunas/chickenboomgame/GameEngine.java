@@ -18,6 +18,7 @@ public class GameEngine {
     private int currentLevel;
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
+    private long starTime;
 
 
 
@@ -39,11 +40,15 @@ public class GameEngine {
     public void init() throws  InterruptedException{
 
         Thread.sleep(2000);
+        long loopStart = System.currentTimeMillis();
+        long loopEnd = System.currentTimeMillis();
 
         while(!gameOver()) {
 
-            Thread.sleep(50);
+            long elapsedLoopTime = loopEnd-loopStart;
 
+            Thread.sleep(50-(elapsedLoopTime));
+            loopStart = System.currentTimeMillis();
             if (levelController % 75 == 0){
 
                 currentLevel++;
@@ -57,6 +62,7 @@ public class GameEngine {
             checkForPlayerCollision();
 
             levelController ++;
+            loopEnd = System.currentTimeMillis();
 
         }
     }
