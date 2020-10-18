@@ -77,6 +77,9 @@ public class GameController implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        if (player1.isCrashed() || player2.isCrashed()) {
+            return;
+        }
         if ((keyboardEvent.getKey() == KeyboardEvent.KEY_S)){
             player1.moveInDirection(Movement.DOWN);
         }

@@ -2,16 +2,19 @@ package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.awt.*;
 
 public class Obstacle extends GameObject {
 
     private int speed;
-    private Rectangle obstacle;
+    private Picture obstacle;
 
-    public Obstacle(Movement direction, int x, int y, int speed) {
-        super(new Rectangle(x,y,(int)((Math.random()*80)+40),(int)((Math.random()*80)+40)), Color.DARK_GRAY, direction);
+    public Obstacle(Movement direction, int x, int y, int speed, Spells spell) {
+        super(new Picture(x,y,spell.finalDirectory(direction)),direction);
         this.speed = speed;
-        obstacle = (Rectangle) getShape();
+        obstacle = (Picture) getShape();
         show();
     }
 
@@ -46,7 +49,7 @@ public class Obstacle extends GameObject {
 
     @Override
     public void show() {
-        obstacle.fill();
+        obstacle.draw();
     }
 
     public boolean outOfBounds(){

@@ -21,6 +21,7 @@ public class GameEngine {
     private int currentLevel;
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
+    private long starTime;
 
 
 
@@ -42,11 +43,16 @@ public class GameEngine {
     public void init() throws  InterruptedException{
 
         Thread.sleep(2000);
+        long loopStart = System.currentTimeMillis();
+        long loopEnd = System.currentTimeMillis();
 
         while(!gameOver()) {
 
-            Thread.sleep(50);
+            long elapsedLoopTime = loopEnd-loopStart;
+            elapsedLoopTime = elapsedLoopTime > 50 ? 50 : elapsedLoopTime;
 
+            Thread.sleep(50-(elapsedLoopTime));
+            loopStart = System.currentTimeMillis();
             if (levelController % 75 == 0){
 
                 currentLevel++;
@@ -60,6 +66,7 @@ public class GameEngine {
             checkForPlayerCollision();
 
             levelController ++;
+            loopEnd = System.currentTimeMillis();
 
         }
 
@@ -67,20 +74,13 @@ public class GameEngine {
     }
 
     private void showResult() {
+        String roastedChickenPath = "resources/images/deadchicken/roastedchicken.png";
         if (player1.isCrashed()) {
-           player1.setPicture("resource/images/deadchicken/deadchicken.png");
+           player1.setPicture(roastedChickenPath);
         }
         if (player2.isCrashed()) {
-            player2.setPicture("resource/images/deadchicken/deadchicken.png");
+            player2.setPicture(roastedChickenPath);
         }
-        String image = "draw.png";
-        if(!player1.isCrashed()) {
-            image = "whitechickenwins.png";
-        } else if (!player2.isCrashed()) {
-            image = "blackchickenwins.png";
-        }
-        Picture result = new Picture(600,420,"resources/images/" + image);
-        result.draw();
     }
 
     private void moveAllGameObjects(){

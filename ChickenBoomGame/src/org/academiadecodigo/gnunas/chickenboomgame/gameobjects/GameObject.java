@@ -7,21 +7,18 @@ import org.academiadecodigo.simplegraphics.graphics.Shape;
 public abstract class GameObject {
 
     private Shape shape;
-    private Color color;
     private boolean moving = true;
     private Movement direction;
 
-    public GameObject(Shape shape, Color color, Movement direction){
+    public GameObject(Shape shape, Movement direction){
         this.shape = shape;
-        this.color = color;
         this.direction = direction;
 
     }
 
-    public GameObject(Shape shape, Color color){
+    public GameObject(Shape shape){
         moving = false;
         this.shape = shape;
-        this.color = color;
     }
 
     public abstract void move();

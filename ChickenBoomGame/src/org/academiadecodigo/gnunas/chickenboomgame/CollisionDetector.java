@@ -3,7 +3,10 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Obstacle;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObject;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Steroid;
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
+import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
+import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 
 import java.util.LinkedList;
 
@@ -45,11 +48,42 @@ public class CollisionDetector {
 
             if (object instanceof Steroid) {
 
-                GameObject steroid = (Steroid) object;
+                GameObject steroids = (Steroid) object;
 
+                if(checkRange(steroids, player)) {
+
+                    Steroid steroid = (Steroid) object;
+                    if (steroid.isUsed()){
+                        continue;
+                    }
+                    object.delete();
+
+
+                    if (steroid.getType() == SteroidType.ICE || steroid.getType() == SteroidType.SKULL) {
+                        if (player instanceof WhiteChicken) {
+                            BlackChicken player2 = (BlackChicken) players[1];
+                            player2.setStatus(steroid.getType());
+                            continue;
+                        }
+
+                        WhiteChicken player1 = (WhiteChicken) players[0];
+                        player1.setStatus(steroid.getType());
+                        continue;
+                    }
+
+                    if (steroid.getType() == SteroidType.CORN || steroid.getType() == SteroidType.MUSHROOM) {
+                        if (player instanceof WhiteChicken) {
+                            WhiteChicken player1 = (WhiteChicken) players[0];
+                            player1.setStatus(steroid.getType());
+                            continue;
+                        }
+
+                        BlackChicken player2 = (BlackChicken) players[1];
+                        player2.setStatus(steroid.getType());
+                        continue;
+                    }
+                }
                 continue;
-                //checkRange(steroid, player)
-                //implementar
             }
 
             GameObject obstacle = (Obstacle) object;

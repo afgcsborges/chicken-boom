@@ -1,6 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame.players;
 
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
+import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public abstract class Player {
@@ -8,11 +9,11 @@ public abstract class Player {
     private Field field;
     private Picture chicken;
     private boolean crashed;
+    private SteroidType steroidType;
 
     public Player(Field field, Picture chicken) {
         this.field = field;
         this.chicken = chicken;
-
         crashed = false;
 
     }
@@ -66,8 +67,12 @@ public abstract class Player {
     }
 
     public void setPicture(String imageFile) {
-        chicken = new Picture(getX(), getY(), imageFile);
+        Picture picture = new Picture(getX(), getY(), imageFile);
+        hide();
+        chicken = picture;
         show();
     }
+
+
 }
 
