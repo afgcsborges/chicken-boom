@@ -67,6 +67,7 @@ public abstract class Player {
 
     public void setPicture(String imageFile) {
         chicken = new Picture(getX(), getY(), imageFile);
+        show();
     }
 }
 
