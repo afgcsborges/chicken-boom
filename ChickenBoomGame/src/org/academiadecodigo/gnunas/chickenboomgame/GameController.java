@@ -121,8 +121,21 @@ public class GameController implements KeyboardHandler {
         }
         if (gameEngine.gameState == GameState.MAIN_MENU) {
             if ((keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER)) {
-                System.out.println("changed");
-                gameEngine.gameState = GameState.PLAYING;
+                if (gameEngine.selectedKey == GameEngine.SelectedKey.START) {
+                    gameEngine.gameState = GameState.PLAYING;
+                }
+                if (gameEngine.selectedKey == GameEngine.SelectedKey.INSTRUCTION){
+                    gameEngine.gameState = GameState.INSTRUCTIONS;
+                }
+                if (gameEngine.selectedKey == GameEngine.SelectedKey.EXIT){
+                    gameEngine.exit();
+                }
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)) {
+                gameEngine.selectedKey = gameEngine.selectedKey == GameEngine.SelectedKey.START ? GameEngine.SelectedKey.INSTRUCTION : GameEngine.SelectedKey.EXIT;
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_UP)) {
+                gameEngine.selectedKey = gameEngine.selectedKey == GameEngine.SelectedKey.EXIT ? GameEngine.SelectedKey.INSTRUCTION : GameEngine.SelectedKey.START;
             }
         }
 

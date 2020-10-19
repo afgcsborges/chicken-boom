@@ -21,4 +21,8 @@ public class Field {
     public int getHeight(){
         return field.getHeight();
     }
+
+    public Picture getField() {
+        return field;
+    }
 }

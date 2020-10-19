@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class GameEngine {
@@ -23,6 +24,7 @@ public class GameEngine {
     private CollisionDetector collisionDetector;
     private long starTime;
     public GameState gameState;
+    public SelectedKey selectedKey;
 
 
 
@@ -36,6 +38,7 @@ public class GameEngine {
         gameObjects = new LinkedList<>();
         collisionDetector = new CollisionDetector(gameObjects,new Player[] {player1,player2});
         gameState = GameState.MAIN_MENU;
+        selectedKey = SelectedKey.START;
     }
 
 
@@ -43,7 +46,32 @@ public class GameEngine {
 
     public void init() throws  InterruptedException{
 
+        Picture arrow = new Picture(450,305,"resources/images/gamestate/arrow.png");
+        arrow.draw();
+        SelectedKey currentKey = selectedKey;
+
         while (gameState == GameState.MAIN_MENU){
+
+            field.getField().load("resources/images/gamestate/mianmenu.png");
+
+            if (currentKey != selectedKey) {
+                if (selectedKey == SelectedKey.START) {
+                    arrow.delete();
+                    arrow = new Picture(450, 305, "resources/images/gamestate/arrow.png");
+                    arrow.draw();
+                }
+                if (selectedKey == SelectedKey.INSTRUCTION) {
+                    arrow.delete();
+                    arrow = new Picture(450, 445, "resources/images/gamestate/arrow.png");
+                    arrow.draw();
+                }
+                if (selectedKey == SelectedKey.EXIT) {
+                    arrow.delete();
+                    arrow = new Picture(450, 555, "resources/images/gamestate/arrow.png");
+                    arrow.draw();
+                }
+            }
+            currentKey = selectedKey;
 
             Thread.sleep(50);
 
@@ -131,4 +159,17 @@ public class GameEngine {
         return gameState;
     }
 
+    public enum SelectedKey{
+        START,
+        INSTRUCTION,
+        EXIT
+    }
+
+    public void setSelectedKey(SelectedKey selectedKey) {
+        this.selectedKey = selectedKey;
+    }
+
+    public void exit() {
+        System.exit(0);
+    }
 }
