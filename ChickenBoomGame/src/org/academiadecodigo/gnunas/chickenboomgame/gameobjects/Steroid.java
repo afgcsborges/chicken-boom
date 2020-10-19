@@ -1,20 +1,20 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Ellipse;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Steroid extends GameObject {
 
     private SteroidType type;
-    private Ellipse steroid;
+    private Picture steroid;
     private boolean used;
 
 
     public Steroid(SteroidType type) {
-        super(new Ellipse((int)((Math.random()*1260)+120-30),(int)((Math.random()*660)+120-30), 30,30));
+        super(new Picture((int)((Math.random()*1260)+120-30),(int)((Math.random()*660)+120-30), type.getDirectory()));
         this.type = type;
-        steroid = (Ellipse) getShape();
-        steroid.setColor(type.getColor());
-        steroid.fill();
+        steroid = (Picture) getShape();
+        steroid.draw();
 
     }
 

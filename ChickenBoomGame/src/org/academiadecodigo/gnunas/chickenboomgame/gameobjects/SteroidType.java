@@ -4,18 +4,18 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 
 public enum SteroidType {
 
-    CORN(Color.YELLOW),
-    MUSHROOM(Color.RED),
-    ICE(Color.CYAN),
-    SKULL(Color.GREEN);
+    CORN("resources/images/steroids/corn.png"),
+    MUSHROOM("resources/images/steroids/mushroom.png"),
+    ICE("resources/images/steroids/ice.png"),
+    SKULL("resources/images/steroids/skull.png");
 
-    private Color color;
+    private String directory;
 
-    SteroidType(Color color){
-        this.color = color;
+    SteroidType(String directory){
+        this.directory = directory;
     }
 
-    public Color getColor() {
-        return color;
+    public String getDirectory() {
+        return directory;
     }
 }
