@@ -13,13 +13,19 @@ public class GameController implements KeyboardHandler {
     Keyboard gameController;
     WhiteChicken player1;
     BlackChicken player2;
+    GameEngine gameEngine;
 
-    public GameController(WhiteChicken player1, BlackChicken player2){
-
+    public GameController(WhiteChicken player1, BlackChicken player2, GameEngine gameEngine){
+        this.gameEngine = gameEngine;
         this.player1 = player1;
         this.player2 = player2;
 
         gameController = new Keyboard(this);
+
+        KeyboardEvent select = new KeyboardEvent();
+        select.setKey(KeyboardEvent.KEY_ENTER);
+        select.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        gameController.addEventListener(select);
 
         KeyboardEvent moveP1Down = new KeyboardEvent();
         moveP1Down.setKey(KeyboardEvent.KEY_S);
@@ -77,39 +83,47 @@ public class GameController implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if (player1.isCrashed() || player2.isCrashed()) {
-            return;
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_S)){
-            player1.moveInDirection(Movement.DOWN);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_W)){
-            player1.moveInDirection(Movement.UP);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_D)){
-            player1.moveInDirection(Movement.RIGHT);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_A)){
-            player1.moveInDirection(Movement.LEFT);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_Q)){
-            player1.stopMoving();
-        }
+        if(gameEngine.gameState == GameState.PLAYING) {
+            if (player1.isCrashed() || player2.isCrashed()) {
+                return;
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_S)) {
+                player1.moveInDirection(Movement.DOWN);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_W)) {
+                player1.moveInDirection(Movement.UP);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_D)) {
+                player1.moveInDirection(Movement.RIGHT);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_A)) {
+                player1.moveInDirection(Movement.LEFT);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_Q)) {
+                player1.stopMoving();
+            }
 
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)){
-            player2.moveInDirection(Movement.DOWN);
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_DOWN)) {
+                player2.moveInDirection(Movement.DOWN);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_UP)) {
+                player2.moveInDirection(Movement.UP);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT)) {
+                player2.moveInDirection(Movement.RIGHT);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)) {
+                player2.moveInDirection(Movement.LEFT);
+            }
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_SHIFT)) {
+                player2.stopMoving();
+            }
         }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_UP)){
-            player2.moveInDirection(Movement.UP);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_RIGHT)){
-            player2.moveInDirection(Movement.RIGHT);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_LEFT)){
-            player2.moveInDirection(Movement.LEFT);
-        }
-        if ((keyboardEvent.getKey() == KeyboardEvent.KEY_SHIFT)){
-            player2.stopMoving();
+        if (gameEngine.gameState == GameState.MAIN_MENU) {
+            if ((keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER)) {
+                System.out.println("changed");
+                gameEngine.gameState = GameState.PLAYING;
+            }
         }
 
     }

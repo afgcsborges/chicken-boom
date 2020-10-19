@@ -22,6 +22,7 @@ public class GameEngine {
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
     private long starTime;
+    public GameState gameState;
 
 
 
@@ -29,12 +30,12 @@ public class GameEngine {
         field = new Field();
         player1 = new WhiteChicken(field);
         player2 = new BlackChicken(field);
-        gameController = new GameController(player1,player2);
+        gameController = new GameController(player1,player2,this);
         levelController = 0;
         currentLevel = 0;
         gameObjects = new LinkedList<>();
         collisionDetector = new CollisionDetector(gameObjects,new Player[] {player1,player2});
-
+        gameState = GameState.MAIN_MENU;
     }
 
 
@@ -42,9 +43,18 @@ public class GameEngine {
 
     public void init() throws  InterruptedException{
 
+        while (gameState == GameState.MAIN_MENU){
+
+            Thread.sleep(50);
+
+        }
+
         Thread.sleep(2000);
         long loopStart = System.currentTimeMillis();
         long loopEnd = System.currentTimeMillis();
+
+
+
 
         while(!gameOver()) {
 
@@ -112,4 +122,13 @@ public class GameEngine {
         collisionDetector.checkCollision(player2);
 
     }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
 }
