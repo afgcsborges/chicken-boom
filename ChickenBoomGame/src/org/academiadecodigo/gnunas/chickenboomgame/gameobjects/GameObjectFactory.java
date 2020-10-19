@@ -30,13 +30,13 @@ public class GameObjectFactory {
 
         switch (startLocation){
             case UP:
-                return new Obstacle(Movement.DOWN,(int)((Math.random()*1260-40)+120),0,20, randomSpell);
+                return new Obstacle(Movement.DOWN,(int)((Math.random()*1260-40)+120),0,10, randomSpell);
             case DOWN:
-                return new Obstacle(Movement.UP,(int)((Math.random()*1260-40)+120),900-120,20, randomSpell);
+                return new Obstacle(Movement.UP,(int)((Math.random()*1260-40)+120),900-120,10, randomSpell);
             case LEFT:
-                return new Obstacle(Movement.RIGHT,0,(int)((Math.random()*660-40)+120),20, randomSpell);
+                return new Obstacle(Movement.RIGHT,0,(int)((Math.random()*660-40)+120),10, randomSpell);
             case RIGHT:
-                return new Obstacle(Movement.LEFT,1499-120,(int)((Math.random()*660-40)+120),20, randomSpell);
+                return new Obstacle(Movement.LEFT,1499-120,(int)((Math.random()*660-40)+120),10, randomSpell);
         }
         return null;
     }

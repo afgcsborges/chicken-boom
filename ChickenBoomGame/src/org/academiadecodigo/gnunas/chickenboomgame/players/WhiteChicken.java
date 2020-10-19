@@ -16,7 +16,7 @@ public class WhiteChicken extends Player {
 
         super(field, new Picture(field.getWidth()/3,field.getHeight()/2,"resources/images/whitechicken/down/whitechickendown.png"));
         status = SteroidType.CORN;
-        this.speed = 10;
+        this.speed = 5;
         this.direction = Movement.DOWN;
         show();
     }

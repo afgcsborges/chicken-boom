@@ -93,7 +93,7 @@ public class CollisionDetector {
                 player.setCrashed();
             }
         }
-        if (players.length == 2 && checkRange(players[0], players[1])) {
+        if (players[0].getX() == players[1].getX() && players[0].getY() == players[1].getY()) {
             players[0].setCrashed();
             players[1].setCrashed();
         }

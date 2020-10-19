@@ -49,13 +49,13 @@ public class GameEngine {
         while(!gameOver()) {
 
             long elapsedLoopTime = loopEnd-loopStart;
-            elapsedLoopTime = elapsedLoopTime > 50 ? 50 : elapsedLoopTime;
+            elapsedLoopTime = elapsedLoopTime > 25 ? 25 : elapsedLoopTime;
 
-            Thread.sleep(50-(elapsedLoopTime));
+            Thread.sleep(25-(elapsedLoopTime));
             loopStart = System.currentTimeMillis();
             player1.move();
             player2.move();
-            if (levelController % 75 == 0){
+            if (levelController % 150 == 0){
 
                 currentLevel++;
                 GameObjectFactory.generateObjects(currentLevel,gameObjects);
