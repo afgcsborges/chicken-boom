@@ -119,7 +119,7 @@ public class GameController implements KeyboardHandler {
                 player2.stopMoving();
             }
         }
-        if (gameEngine.gameState == GameState.MAIN_MENU) {
+        if (gameEngine.gameState != GameState.PLAYING) {
             if ((keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER)) {
                 if (gameEngine.selectedKey == GameEngine.SelectedKey.START) {
                     gameEngine.gameState = GameState.PLAYING;

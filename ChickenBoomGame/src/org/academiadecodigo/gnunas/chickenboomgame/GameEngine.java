@@ -50,7 +50,7 @@ public class GameEngine {
         arrow.draw();
         SelectedKey currentKey = selectedKey;
 
-        while (gameState == GameState.MAIN_MENU){
+        while (gameState != GameState.PLAYING){
 
             field.getField().load("resources/images/gamestate/mianmenu.png");
 
