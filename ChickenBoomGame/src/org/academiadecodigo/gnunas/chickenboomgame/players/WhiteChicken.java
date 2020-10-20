@@ -18,7 +18,6 @@ public class WhiteChicken extends Player {
         status = SteroidType.CORN;
         this.speed = 5;
         this.direction = Movement.DOWN;
-        show();
     }
 
 

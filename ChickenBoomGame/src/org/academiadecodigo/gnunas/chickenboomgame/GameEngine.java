@@ -27,32 +27,23 @@ public class GameEngine {
     public SelectedKey selectedKey;
 
 
-
-    public GameEngine(){
+    public GameEngine() {
         field = new Field();
         player1 = new WhiteChicken(field);
         player2 = new BlackChicken(field);
-        gameController = new GameController(player1,player2,this);
-        levelController = 0;
-        currentLevel = 0;
-        gameObjects = new LinkedList<>();
-        collisionDetector = new CollisionDetector(gameObjects,new Player[] {player1,player2});
+        gameController = new GameController(player1, player2, this);
         gameState = GameState.MAIN_MENU;
         selectedKey = SelectedKey.START;
     }
 
 
+    public void init() throws InterruptedException {
 
-
-    public void init() throws  InterruptedException{
-
-        Picture arrow = new Picture(850,270,"resources/images/menus/menuselection.png");
+        Picture arrow = new Picture(850, 270, "resources/images/menus/menuselection.png");
         arrow.draw();
         SelectedKey currentKey = selectedKey;
 
-        while (gameState != GameState.PLAYING){
-
-            field.getField().load("resources/images/menus/mainmenudraftwithoutarrows.png");
+        while (gameState != GameState.PLAYING) {
 
             if (currentKey != selectedKey) {
                 if (selectedKey == SelectedKey.START) {
@@ -76,33 +67,45 @@ public class GameEngine {
             Thread.sleep(50);
 
         }
+        arrow.delete();
+    }
+
+    public void start() throws InterruptedException{
+
+        field.getField().load("resources/images/newgamearena.png");
+
+        levelController = 0;
+        currentLevel = 0;
+        gameObjects = new LinkedList<>();
+        collisionDetector = new CollisionDetector(gameObjects, new Player[]{player1, player2});
+
+        player1.show();
+        player2.show();
+
 
         Thread.sleep(2000);
         long loopStart = System.currentTimeMillis();
         long loopEnd = System.currentTimeMillis();
 
+        while (!gameOver()) {
 
-
-
-        while(!gameOver()) {
-
-            long elapsedLoopTime = loopEnd-loopStart;
+            long elapsedLoopTime = loopEnd - loopStart;
             elapsedLoopTime = elapsedLoopTime > 25 ? 25 : elapsedLoopTime;
 
-            Thread.sleep(25-(elapsedLoopTime));
+            Thread.sleep(25 - (elapsedLoopTime));
             loopStart = System.currentTimeMillis();
             player1.move();
             player2.move();
-            if (levelController % 150 == 0){
+            if (levelController % 150 == 0) {
 
                 currentLevel++;
-                GameObjectFactory.generateObjects(currentLevel,gameObjects);
+                GameObjectFactory.generateObjects(currentLevel, gameObjects);
             }
             moveAllGameObjects();
 
             checkForPlayerCollision();
 
-            levelController ++;
+            levelController++;
             loopEnd = System.currentTimeMillis();
 
         }

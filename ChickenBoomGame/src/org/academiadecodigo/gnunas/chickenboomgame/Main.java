@@ -16,5 +16,7 @@ public class Main {
         Thread.sleep(500);
 
         game.init();
+
+        game.start();
     }
 }

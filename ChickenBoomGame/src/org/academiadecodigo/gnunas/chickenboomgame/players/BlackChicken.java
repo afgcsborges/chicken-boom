@@ -18,7 +18,6 @@ public class BlackChicken extends Player {
         status = SteroidType.CORN;
         this.speed = 5;
         this.direction = Movement.DOWN;
-        show();
     }
 
     public void setStatus(SteroidType type) {
