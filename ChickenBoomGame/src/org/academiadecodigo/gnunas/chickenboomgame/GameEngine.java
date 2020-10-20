@@ -23,6 +23,7 @@ public class GameEngine {
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
     private long starTime;
+    private Picture instructions;
     public GameState gameState;
     public SelectedKey selectedKey;
 
@@ -66,6 +67,8 @@ public class GameEngine {
 
             if (gameState == GameState.INSTRUCTIONS) {
                 showInstructions();
+            } else {
+                hideInstructions();
             }
 
             Thread.sleep(50);
@@ -143,8 +146,17 @@ public class GameEngine {
     }
 
     private void showInstructions() {
-        Picture instructions = new Picture(0,0, "resources/images/menus/instructionsmenu.png");
-        instructions.draw();
+        if(instructions == null) {
+            instructions = new Picture(0, 0, "resources/images/menus/instructionsmenu.png");
+            instructions.draw();
+        }
+    }
+
+    private void hideInstructions() {
+        if(instructions != null) {
+            instructions.delete();
+            instructions = null;
+        }
     }
 
     private void moveAllGameObjects(){
