@@ -39,7 +39,7 @@ public class GameEngine {
 
     public void init() throws InterruptedException {
 
-        Picture arrow = new Picture(850, 270, "resources/images/menus/menuselection.png");
+        Picture arrow = new Picture(850, 270, "resources/images/menus/pointer.png");
         arrow.draw();
         SelectedKey currentKey = selectedKey;
 
@@ -48,17 +48,17 @@ public class GameEngine {
             if (currentKey != selectedKey) {
                 if (selectedKey == SelectedKey.START) {
                     arrow.delete();
-                    arrow = new Picture(850, 270, "resources/images/menus/menuselection.png");
+                    arrow = new Picture(850, 270, "resources/images/menus/pointer.png");
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.INSTRUCTION) {
                     arrow.delete();
-                    arrow = new Picture(850, 401, "resources/images/menus/menuselection.png");
+                    arrow = new Picture(850, 410, "resources/images/menus/pointer.png");
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.EXIT) {
                     arrow.delete();
-                    arrow = new Picture(850, 532, "resources/images/menus/menuselection.png");
+                    arrow = new Picture(850, 550, "resources/images/menus/pointer.png");
                     arrow.draw();
                 }
             }

@@ -9,7 +9,7 @@ public class Field {
     private Picture field;
 
     public Field(){
-        field = new Picture(0,0,"resources/images/menus/mainmenudraftwithoutarrows.png");
+        field = new Picture(0,0,"resources/images/menus/mainmenu.png");
         field.draw();
 
     }
