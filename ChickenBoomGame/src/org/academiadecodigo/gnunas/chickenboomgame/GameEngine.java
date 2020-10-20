@@ -46,28 +46,28 @@ public class GameEngine {
 
     public void init() throws  InterruptedException{
 
-        Picture arrow = new Picture(450,305,"resources/images/gamestate/arrow.png");
+        Picture arrow = new Picture(850,270,"resources/images/menus/menuselection.png");
         arrow.draw();
         SelectedKey currentKey = selectedKey;
 
         while (gameState != GameState.PLAYING){
 
-            field.getField().load("resources/images/gamestate/mianmenu.png");
+            field.getField().load("resources/images/menus/mainmenudraftwithoutarrows.png");
 
             if (currentKey != selectedKey) {
                 if (selectedKey == SelectedKey.START) {
                     arrow.delete();
-                    arrow = new Picture(450, 305, "resources/images/gamestate/arrow.png");
+                    arrow = new Picture(850, 270, "resources/images/menus/menuselection.png");
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.INSTRUCTION) {
                     arrow.delete();
-                    arrow = new Picture(450, 445, "resources/images/gamestate/arrow.png");
+                    arrow = new Picture(850, 401, "resources/images/menus/menuselection.png");
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.EXIT) {
                     arrow.delete();
-                    arrow = new Picture(450, 555, "resources/images/gamestate/arrow.png");
+                    arrow = new Picture(850, 532, "resources/images/menus/menuselection.png");
                     arrow.draw();
                 }
             }
