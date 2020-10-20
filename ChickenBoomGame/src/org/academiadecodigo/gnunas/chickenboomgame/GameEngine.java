@@ -25,6 +25,7 @@ public class GameEngine {
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
     private Picture result;
+    private Picture instructions;
     public GameState gameState;
     public SelectedKey selectedKey;
 
@@ -68,6 +69,10 @@ public class GameEngine {
 
             if (gameState == GameState.INSTRUCTIONS) {
                 showInstructions();
+                while (gameState == GameState.INSTRUCTIONS){
+                    Thread.sleep(50);
+                }
+                hideInstructions();
             }
 
             Thread.sleep(50);
@@ -128,7 +133,7 @@ public class GameEngine {
             player1 = new WhiteChicken(field);
             player2 = new BlackChicken(field);
             gameController.giveNewPlayers(player1,player2);
-            gameObjects.clear();
+            clearAllObjects();
             start();
         }
         if (gameState == GameState.MAIN_MENU) {
@@ -137,7 +142,8 @@ public class GameEngine {
             result.delete();
             player1 = new WhiteChicken(field);
             player2 = new BlackChicken(field);
-            gameObjects.clear();
+            gameController.giveNewPlayers(player1,player2);
+            clearAllObjects();
             field.getField().delete();
             field = new Field();
             selectedKey = SelectedKey.START;
@@ -173,8 +179,17 @@ public class GameEngine {
     }
 
     private void showInstructions() {
-        Picture instructions = new Picture(0,0, "resources/images/menus/instructionsmenu.png");
-        instructions.draw();
+        if(instructions == null) {
+            instructions = new Picture(0, 0, "resources/images/menus/instructionsmenu.png");
+            instructions.draw();
+        }
+    }
+
+    private void hideInstructions() {
+        if(instructions != null) {
+            instructions.delete();
+            instructions = null;
+        }
     }
 
     private void moveAllGameObjects(){
@@ -213,5 +228,12 @@ public class GameEngine {
 
     public void exit() {
         System.exit(0);
+    }
+
+    private void clearAllObjects(){
+        for ( GameObject o : gameObjects){
+            o.delete();
+        }
+        gameObjects.clear();
     }
 }
