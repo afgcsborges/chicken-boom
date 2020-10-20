@@ -12,9 +12,6 @@ public class Main {
 
         GameEngine game = new GameEngine();
 
-
-        Thread.sleep(500);
-
         game.init();
 
         game.start();

@@ -5,10 +5,12 @@ import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObjectFactory
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -22,7 +24,7 @@ public class GameEngine {
     private int currentLevel;
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
-    private long starTime;
+    private Picture result;
     public GameState gameState;
     public SelectedKey selectedKey;
 
@@ -38,6 +40,8 @@ public class GameEngine {
 
 
     public void init() throws InterruptedException {
+
+
 
         Picture arrow = new Picture(850, 270, "resources/images/menus/menuselection.png");
         arrow.draw();
@@ -109,8 +113,36 @@ public class GameEngine {
             loopEnd = System.currentTimeMillis();
 
         }
-
+        gameState = GameState.GAMEOVER;
         showResult();
+
+        while (gameState == GameState.GAMEOVER) {
+            Thread.sleep(50);
+        }
+        if (gameState == GameState.PLAYING){
+            player1.hide();
+            player2.hide();
+            result.delete();
+            player1 = new WhiteChicken(field);
+            player2 = new BlackChicken(field);
+            gameController.giveNewPlayers(player1,player2);
+            gameObjects.clear();
+            start();
+        }
+        if (gameState == GameState.MAIN_MENU) {
+            player1.hide();
+            player2.hide();
+            result.delete();
+            player1 = new WhiteChicken(field);
+            player2 = new BlackChicken(field);
+            gameObjects.clear();
+            field.getField().delete();
+            field = new Field();
+            selectedKey = SelectedKey.START;
+            init();
+            start();
+        }
+
     }
 
     private void showResult() {
@@ -133,7 +165,7 @@ public class GameEngine {
             image = "blackchickenwin.png";
             player1.show();
         }
-        Picture result = new Picture(0, 0, "resources/images/matchresult/" + image);
+        result = new Picture(0, 0, "resources/images/matchresult/" + image);
         result.draw();
 
     }

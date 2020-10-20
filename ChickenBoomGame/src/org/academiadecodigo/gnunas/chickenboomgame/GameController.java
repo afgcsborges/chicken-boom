@@ -2,6 +2,7 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Movement;
 import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
+import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -26,6 +27,11 @@ public class GameController implements KeyboardHandler {
         select.setKey(KeyboardEvent.KEY_ENTER);
         select.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         gameController.addEventListener(select);
+
+        KeyboardEvent esc = new KeyboardEvent();
+        esc.setKey(KeyboardEvent.KEY_ESC);
+        esc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        gameController.addEventListener(esc);
 
         KeyboardEvent moveP1Down = new KeyboardEvent();
         moveP1Down.setKey(KeyboardEvent.KEY_S);
@@ -119,7 +125,16 @@ public class GameController implements KeyboardHandler {
                 player2.stopMoving();
             }
         }
-        if (gameEngine.gameState != GameState.PLAYING) {
+        if (gameEngine.gameState == GameState.GAMEOVER){
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER) {
+                gameEngine.gameState = GameState.PLAYING;
+            }
+
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_ESC) {
+                gameEngine.gameState = GameState.MAIN_MENU;
+            }
+        }
+        if (gameEngine.gameState == GameState.MAIN_MENU || gameEngine.gameState == GameState.INSTRUCTIONS) {
             if ((keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER)) {
                 if (gameEngine.selectedKey == GameEngine.SelectedKey.START) {
                     gameEngine.gameState = GameState.PLAYING;
@@ -144,5 +159,10 @@ public class GameController implements KeyboardHandler {
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
+    }
+
+    public void giveNewPlayers(WhiteChicken p1, BlackChicken p2){
+        player1 = p1;
+        player2 = p2;
     }
 }
