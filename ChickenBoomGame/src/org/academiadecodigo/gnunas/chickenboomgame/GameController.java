@@ -89,7 +89,7 @@ public class GameController implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(gameEngine.gameState == GameState.PLAYING) {
+        if (gameEngine.gameState == GameState.PLAYING) {
             if (player1.isCrashed() || player2.isCrashed()) {
                 return;
             }
@@ -124,8 +124,9 @@ public class GameController implements KeyboardHandler {
             if ((keyboardEvent.getKey() == KeyboardEvent.KEY_SHIFT)) {
                 player2.stopMoving();
             }
+            return;
         }
-        if (gameEngine.gameState == GameState.GAMEOVER){
+        if (gameEngine.gameState == GameState.GAMEOVER) {
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER) {
                 gameEngine.gameState = GameState.PLAYING;
             }
@@ -139,10 +140,10 @@ public class GameController implements KeyboardHandler {
                 if (gameEngine.selectedKey == GameEngine.SelectedKey.START) {
                     gameEngine.gameState = GameState.PLAYING;
                 }
-                if (gameEngine.selectedKey == GameEngine.SelectedKey.INSTRUCTION){
+                if (gameEngine.selectedKey == GameEngine.SelectedKey.INSTRUCTION) {
                     gameEngine.gameState = GameState.INSTRUCTIONS;
                 }
-                if (gameEngine.selectedKey == GameEngine.SelectedKey.EXIT){
+                if (gameEngine.selectedKey == GameEngine.SelectedKey.EXIT) {
                     gameEngine.exit();
                 }
             }
@@ -153,7 +154,6 @@ public class GameController implements KeyboardHandler {
                 gameEngine.selectedKey = gameEngine.selectedKey == GameEngine.SelectedKey.EXIT ? GameEngine.SelectedKey.INSTRUCTION : GameEngine.SelectedKey.START;
             }
         }
-
     }
 
     @Override
