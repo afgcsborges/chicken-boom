@@ -64,6 +64,10 @@ public class GameEngine {
             }
             currentKey = selectedKey;
 
+            if (gameState == GameState.INSTRUCTIONS) {
+                showInstructions();
+            }
+
             Thread.sleep(50);
 
         }
@@ -136,6 +140,11 @@ public class GameEngine {
         Picture result = new Picture(0, 0, "resources/images/matchresult/" + image);
         result.draw();
 
+    }
+
+    private void showInstructions() {
+        Picture instructions = new Picture(0,0, "resources/images/menus/instructionsmenu.png");
+        instructions.draw();
     }
 
     private void moveAllGameObjects(){
