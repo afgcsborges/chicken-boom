@@ -50,7 +50,7 @@ public class CollisionDetector {
 
                 GameObject steroids = (Steroid) object;
 
-                if(checkRange(steroids, player)) {
+                if(checkRange(steroids, player) || checkRange(player, steroids) ) {
 
                     Steroid steroid = (Steroid) object;
                     if (steroid.isUsed()){
@@ -88,7 +88,7 @@ public class CollisionDetector {
 
             GameObject obstacle = (Obstacle) object;
 
-            if (checkRange(obstacle, player)) {
+            if (checkRange(obstacle, player)|| checkRange(player, obstacle)) {
 
                 player.setCrashed();
             }
