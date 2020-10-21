@@ -6,9 +6,6 @@ import org.academiadecodigo.gnunas.chickenboomgame.players.BlackChicken;
 import org.academiadecodigo.gnunas.chickenboomgame.players.Player;
 import org.academiadecodigo.gnunas.chickenboomgame.players.WhiteChicken;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.*;
-import java.io.IOException;
 import java.util.LinkedList;
 
 public class GameEngine {
