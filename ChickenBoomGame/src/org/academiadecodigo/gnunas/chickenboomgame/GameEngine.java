@@ -92,6 +92,9 @@ public class GameEngine {
         long loopStart = System.currentTimeMillis();
         long loopEnd = System.currentTimeMillis();
 
+        Sound sound = new Sound("resources/Sounds/bgm/chickenboombgm.wav");
+        sound.play(true);
+
         while (!gameOver()) {
 
             long elapsedLoopTime = loopEnd - loopStart;
@@ -121,6 +124,8 @@ public class GameEngine {
             Thread.sleep(50);
         }
         if (gameState == GameState.PLAYING){
+
+
             player1.hide();
             player2.hide();
             result.delete();
@@ -131,6 +136,9 @@ public class GameEngine {
             start();
         }
         if (gameState == GameState.MAIN_MENU) {
+
+            sound.stop();
+
             player1.hide();
             player2.hide();
             result.delete();
