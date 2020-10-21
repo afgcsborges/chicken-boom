@@ -126,8 +126,6 @@ public class BlackChicken extends Player {
                     }
                     return false;
             }
-
-
         }
         switch (direction){
             case RIGHT:

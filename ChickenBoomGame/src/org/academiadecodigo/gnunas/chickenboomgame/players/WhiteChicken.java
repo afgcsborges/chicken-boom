@@ -99,6 +99,37 @@ public class WhiteChicken extends Player {
     }
 
     private boolean reachedEdge(){
+
+        if (status == SteroidType.SKULL) {
+
+            switch (direction) {
+                case RIGHT:
+                    if (getX() - speed < 120) {
+                        getChicken().translate(120 - getX(), 0);
+                        return true;
+                    }
+                    return false;
+                case LEFT:
+                    if (getX() + getWidth() + speed >= getField().getWidth() - 120) {
+                        getChicken().translate((getField().getWidth() - 122) - (getX() + getWidth()), 0);
+                        return true;
+                    }
+                    return false;
+                case DOWN:
+                    if (getY() - speed < 120) {
+                        getChicken().translate(0, 120 - getY());
+                        return true;
+                    }
+                    return false;
+                case UP:
+                    if (getY() + getHeight() + speed >= getField().getHeight() - 120) {
+                        getChicken().translate(0, (getField().getHeight() - 122) - (getY() + getHeight()));
+                        return true;
+                    }
+                    return false;
+            }
+        }
+
         switch (direction){
             case RIGHT:
                 if (getX()+getWidth()+speed >= getField().getWidth()-120){
