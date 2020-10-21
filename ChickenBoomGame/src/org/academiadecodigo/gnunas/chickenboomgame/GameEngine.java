@@ -236,4 +236,9 @@ public class GameEngine {
         }
         gameObjects.clear();
     }
+
+    public void explode(){
+
+    }
+
 }
