@@ -1,7 +1,5 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-
 public enum SteroidType {
 
     CORN("resources/images/steroids/corn.png"),

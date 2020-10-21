@@ -1,7 +1,5 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.gnunas.chickenboomgame.*;
-
 import java.util.LinkedList;
 
 public class GameObjectFactory {
