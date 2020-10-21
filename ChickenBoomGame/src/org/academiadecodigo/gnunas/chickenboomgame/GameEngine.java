@@ -119,12 +119,14 @@ public class GameEngine {
         }
         gameState = GameState.GAMEOVER;
         showResult();
+        sound.stop();
 
         while (gameState == GameState.GAMEOVER) {
             Thread.sleep(50);
         }
         if (gameState == GameState.PLAYING){
 
+            sound.stop();
 
             player1.hide();
             player2.hide();
