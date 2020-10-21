@@ -22,65 +22,19 @@ public class GameController implements KeyboardHandler {
 
         gameController = new Keyboard(this);
 
-        KeyboardEvent select = new KeyboardEvent();
-        select.setKey(KeyboardEvent.KEY_ENTER);
-        select.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(select);
+        int[] keyCodes = new int[]{KeyboardEvent.KEY_ENTER, KeyboardEvent.KEY_ESC, KeyboardEvent.KEY_S,
+                KeyboardEvent.KEY_W, KeyboardEvent.KEY_D, KeyboardEvent.KEY_A, KeyboardEvent.KEY_DOWN,
+                KeyboardEvent.KEY_UP, KeyboardEvent.KEY_RIGHT, KeyboardEvent.KEY_LEFT, KeyboardEvent.KEY_Q,
+                KeyboardEvent.KEY_SHIFT};
 
-        KeyboardEvent esc = new KeyboardEvent();
-        esc.setKey(KeyboardEvent.KEY_ESC);
-        esc.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(esc);
+        for (int keyCode : keyCodes) {
 
-        KeyboardEvent moveP1Down = new KeyboardEvent();
-        moveP1Down.setKey(KeyboardEvent.KEY_S);
-        moveP1Down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP1Down);
+            KeyboardEvent event = new KeyboardEvent();
+            event.setKey(keyCode);
+            event.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            gameController.addEventListener(event);
 
-        KeyboardEvent moveP1Up = new KeyboardEvent();
-        moveP1Up.setKey(KeyboardEvent.KEY_W);
-        moveP1Up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP1Up);
-
-        KeyboardEvent moveP1Right = new KeyboardEvent();
-        moveP1Right.setKey(KeyboardEvent.KEY_D);
-        moveP1Right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP1Right);
-
-        KeyboardEvent moveP1Left = new KeyboardEvent();
-        moveP1Left.setKey(KeyboardEvent.KEY_A);
-        moveP1Left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP1Left);
-
-        KeyboardEvent moveP2Down = new KeyboardEvent();
-        moveP2Down.setKey(KeyboardEvent.KEY_DOWN);
-        moveP2Down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP2Down);
-
-        KeyboardEvent moveP2Up = new KeyboardEvent();
-        moveP2Up.setKey(KeyboardEvent.KEY_UP);
-        moveP2Up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP2Up);
-
-        KeyboardEvent moveP2Right = new KeyboardEvent();
-        moveP2Right.setKey(KeyboardEvent.KEY_RIGHT);
-        moveP2Right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP2Right);
-
-        KeyboardEvent moveP2Left = new KeyboardEvent();
-        moveP2Left.setKey(KeyboardEvent.KEY_LEFT);
-        moveP2Left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP2Left);
-
-        KeyboardEvent moveP1Stop = new KeyboardEvent();
-        moveP1Stop.setKey(KeyboardEvent.KEY_Q);
-        moveP1Stop.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP1Stop);
-
-        KeyboardEvent moveP2Stop = new KeyboardEvent();
-        moveP2Stop.setKey(KeyboardEvent.KEY_SHIFT);
-        moveP2Stop.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        gameController.addEventListener(moveP2Stop);
+        }
 
     }
 
