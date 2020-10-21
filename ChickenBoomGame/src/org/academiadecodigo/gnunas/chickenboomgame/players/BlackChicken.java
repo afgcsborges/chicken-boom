@@ -44,46 +44,18 @@ public class BlackChicken extends Player {
 
     public void move() {
 
-        if(reachedEdge()){
+        if (reachedEdge()) {
             moving = false;
         }
-
-        if(moving && status == SteroidType.SKULL) {
-            switch (direction) {
-                case LEFT:
-                    getChicken().translate(speed, 0);
-                    return;
-                case RIGHT:
-                    getChicken().translate(-speed, 0);
-                    return;
-                case DOWN:
-                    getChicken().translate(0, -speed);
-                    return;
-                case UP:
-                    getChicken().translate(0, speed);
-                    return;
-
-            }
-        }
-
         if (moving) {
-            switch (direction) {
-                case LEFT:
-                    getChicken().translate(-speed, 0);
-                    return;
-                case RIGHT:
-                    getChicken().translate(speed, 0);
-                    return;
-                case DOWN:
-                    getChicken().translate(0, speed);
-                    return;
-                case UP:
-                    getChicken().translate(0, -speed);
-                    return;
-
+            if (status == SteroidType.SKULL) {
+                getChicken().translate(direction.x * -speed, direction.y * -speed);
+                return;
             }
+            getChicken().translate(direction.x * speed, direction.y * speed);
         }
     }
+
 
     public void moveInDirection(Movement direction){
         this.direction = direction;
@@ -98,62 +70,16 @@ public class BlackChicken extends Player {
 
     private boolean reachedEdge(){
 
-        if (status == SteroidType.SKULL) {
-
-            switch (direction){
-                case RIGHT:
-                    if (getX()-speed < 120){
-                        getChicken().translate(120-getX(),0);
-                        return true;
-                    }
-                    return false;
-                case LEFT:
-                    if (getX()+getWidth()+speed >= getField().getWidth()-120){
-                        getChicken().translate((getField().getWidth()-122)-(getX()+getWidth()),0);
-                        return true;
-                    }
-                    return false;
-                case DOWN:
-                    if (getY()-speed < 120){
-                        getChicken().translate(0,120-getY());
-                        return true;
-                    }
-                    return false;
-                case UP:
-                    if (getY()+getHeight()+speed >= getField().getHeight()-120){
-                        getChicken().translate(0,(getField().getHeight()-122)-(getY()+getHeight()));
-                        return true;
-                    }
-                    return false;
-            }
+        if(status == SteroidType.SKULL){
+            int nextX = getChicken().getX()-direction.x*speed;
+            int nextY = getChicken().getY()-direction.y*speed;
+            return  !((nextX >=120 && nextX+getChicken().getWidth() < getField().getWidth()-120)
+                    && (nextY >=120 && nextY+getChicken().getHeight() < getField().getHeight()-120));
         }
-        switch (direction){
-            case RIGHT:
-                if (getX()+getWidth()+speed >= getField().getWidth()-120){
-                    getChicken().translate((getField().getWidth()-122)-(getX()+getWidth()),0);
-                    return true;
-                }
-                return false;
-            case LEFT:
-                if (getX()-speed < 120){
-                    getChicken().translate(120-getX(),0);
-                    return true;
-                }
-                return false;
-            case DOWN:
-                if (getY()+getHeight()+speed >= getField().getHeight()-120){
-                    getChicken().translate(0,(getField().getHeight()-122)-(getY()+getHeight()));
-                    return true;
-                }
-                return false;
-            case UP:
-                if (getY()-speed < 120){
-                    getChicken().translate(0,120-getY());
-                    return true;
-                }
-                return false;
-        }
-        return false;
+        int nextX = getChicken().getX()+direction.x*speed;
+        int nextY = getChicken().getY()+direction.y*speed;
+        return !((nextX >=120 && nextX+getChicken().getWidth() < getField().getWidth()-120)
+                && (nextY >=120 && nextY+getChicken().getHeight() < getField().getHeight()-120));
     }
 
     private void refreshImage(){
