@@ -10,7 +10,7 @@ public class Steroid extends GameObject {
 
 
     public Steroid(SteroidType type) {
-        super(new Picture((int)((Math.random()*1260)+120-30),(int)((Math.random()*660)+120-30), type.getDirectory()));
+        super(new Picture((int)((Math.random()*1160)+150),(int)((Math.random()*560)+150), type.getDirectory()));
         this.type = type;
         steroid = (Picture) getShape();
         steroid.draw();

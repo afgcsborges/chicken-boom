@@ -116,9 +116,10 @@ public class GameEngine {
             loopEnd = System.currentTimeMillis();
 
         }
-        gameState = GameState.GAMEOVER;
 
-        explode();
+        //explode();
+
+        gameState = GameState.GAMEOVER;
 
         showResult();
         sound.stop();

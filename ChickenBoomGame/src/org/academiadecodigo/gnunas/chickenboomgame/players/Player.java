@@ -11,7 +11,6 @@ public abstract class Player implements Positionable {
     private Field field;
     private Picture chicken;
     private boolean crashed;
-    private SteroidType steroidType;
     private SteroidType status;
     private int speed;
     private boolean moving ;
@@ -21,7 +20,7 @@ public abstract class Player implements Positionable {
         this.field = field;
         this.chicken = chicken;
         crashed = false;
-        speed = 5;
+        speed = 7;
         status = SteroidType.CORN;
         direction = Movement.DOWN;
 
@@ -90,11 +89,11 @@ public abstract class Player implements Positionable {
         status = type;
         switch (type) {
             case ICE:
-                speed = (int) (speed * 0.5);
+                speed = (int) (speed * 0.75);
                 break;
 
             case CORN:
-                speed = (int) (speed * 1.5);
+                speed = (int) (speed * 1.25);
                 break;
 
             case MUSHROOM:
