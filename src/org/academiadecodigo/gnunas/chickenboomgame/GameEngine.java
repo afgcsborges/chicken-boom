@@ -114,7 +114,6 @@ public class GameEngine {
 
             levelController++;
             loopEnd = System.currentTimeMillis();
-
         }
 
         //explode();
@@ -239,6 +238,7 @@ public class GameEngine {
             Picture explosionP1 = new Picture(player1.getX()-25,player1.getY()-50,"resources/images/explosion/0.png");
             Picture explosionP2 = new Picture(player2.getX()-25,player2.getY()-50,"resources/images/explosion/0.png");
             explosionP1.draw();
+            explosionP2.draw();
 
             for(int i = 1 ; i < 48 ; i++){
                 explosionP1.load("resources/images/explosion/" + i + ".png");
