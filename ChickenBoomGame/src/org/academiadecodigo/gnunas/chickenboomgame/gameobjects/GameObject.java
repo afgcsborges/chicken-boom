@@ -1,7 +1,7 @@
 package org.academiadecodigo.gnunas.chickenboomgame.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Shape;
 import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
+import org.academiadecodigo.simplegraphics.graphics.Shape;
 
 public abstract class GameObject implements Positionable {
 

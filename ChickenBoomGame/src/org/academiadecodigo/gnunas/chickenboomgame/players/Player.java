@@ -1,9 +1,9 @@
 package org.academiadecodigo.gnunas.chickenboomgame.players;
 
 import org.academiadecodigo.gnunas.chickenboomgame.Field;
+import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
 
 public abstract class Player implements Positionable {
 
