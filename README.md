@@ -1,6 +1,6 @@
 Developed @ <Academia de Código_>
 
-Created by <Code Cadets>
+Created by Code Cadets<br>
 [António Francisco Borges](https://github.com/afgcsborges)<br>
 [Carlos Afonso](https://github.com/cdsa95)<br>
 [Hugo Rodrigues](https://github.com/Leg4cy-creations)<br>
