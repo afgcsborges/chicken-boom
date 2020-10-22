@@ -1,5 +1,3 @@
-# chicken-boom
-
 Developed @ Academia de Código
 
 Created by Code Cadets<br>
