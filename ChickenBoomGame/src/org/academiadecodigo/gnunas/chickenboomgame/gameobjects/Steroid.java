@@ -4,8 +4,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Steroid extends GameObject {
 
-    private SteroidType type;
-    private Picture steroid;
+    private final SteroidType type;
+    private final Picture steroid;
     private boolean used;
 
 

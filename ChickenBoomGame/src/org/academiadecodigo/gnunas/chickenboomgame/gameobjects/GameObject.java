@@ -5,7 +5,7 @@ import org.academiadecodigo.gnunas.chickenboomgame.Positionable;
 
 public abstract class GameObject implements Positionable {
 
-    private Shape shape;
+    private final Shape shape;
     private boolean moving = true;
     private Movement direction;
 

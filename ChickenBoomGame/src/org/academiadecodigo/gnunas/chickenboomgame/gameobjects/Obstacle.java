@@ -5,7 +5,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Obstacle extends GameObject {
 
     private int speed;
-    private Picture obstacle;
+    private final Picture obstacle;
 
     public Obstacle(Movement direction, int x, int y, int speed, Spells spell) {
         super(new Picture(x,y,spell.finalDirectory(direction)),direction);

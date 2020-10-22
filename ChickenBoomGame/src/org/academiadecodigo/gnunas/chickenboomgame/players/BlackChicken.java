@@ -14,7 +14,7 @@ public class BlackChicken extends Player {
 
     public BlackChicken(Field field) {
 
-        super(field, new Picture((field.getWidth()/3)*2,field.getHeight()/2,"resources/images/blackchicken/down/blackchickendown.png"));
+        super(field, new Picture((field.getWidth()/3f)*2,field.getHeight()/2f,"resources/images/blackchicken/down/blackchickendown.png"));
         status = SteroidType.CORN;
         this.speed = 5;
         this.direction = Movement.DOWN;

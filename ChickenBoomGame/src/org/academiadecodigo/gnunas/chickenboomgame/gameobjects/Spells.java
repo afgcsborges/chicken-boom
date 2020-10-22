@@ -18,8 +18,8 @@ public enum Spells {
     FIREELEMENTAL10033("resources/images/spells/fireelemental/100x33/", "/fireelemental.png"),
     FIREELEMENTAL12039("resources/images/spells/fireelemental/120x39/", "/fireelemental.png"); //TODO: bug for hugo
 
-    private String directory;
-    private String spell;
+    private final String directory;
+    private final String spell;
 
     Spells(String directory, String spell){
         this.directory = directory;

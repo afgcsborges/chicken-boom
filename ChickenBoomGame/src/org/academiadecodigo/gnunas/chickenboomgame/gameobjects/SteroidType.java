@@ -7,7 +7,7 @@ public enum SteroidType {
     ICE("resources/images/steroids/ice.png"),
     SKULL("resources/images/steroids/skull.png");
 
-    private String directory;
+    private final String directory;
 
     SteroidType(String directory){
         this.directory = directory;

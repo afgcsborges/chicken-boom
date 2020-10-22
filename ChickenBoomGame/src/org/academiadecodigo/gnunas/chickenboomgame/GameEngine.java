@@ -13,9 +13,7 @@ public class GameEngine {
     private Field field;
     private WhiteChicken player1;
     private BlackChicken player2;
-    private GameController gameController;
-    private int levelController;
-    private int currentLevel;
+    private final GameController gameController;
     private LinkedList<GameObject> gameObjects;
     private CollisionDetector collisionDetector;
     private Picture result;
@@ -79,8 +77,8 @@ public class GameEngine {
 
         field.getField().load("resources/images/newgamearena.png");
 
-        levelController = 0;
-        currentLevel = 0;
+        int levelController = 0;
+        int currentLevel = 0;
         gameObjects = new LinkedList<>();
         collisionDetector = new CollisionDetector(gameObjects, new Player[]{player1, player2});
 
@@ -212,22 +210,10 @@ public class GameEngine {
 
     }
 
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
-    }
-
-    public GameState getGameState() {
-        return gameState;
-    }
-
     public enum SelectedKey{
         START,
         INSTRUCTION,
         EXIT
-    }
-
-    public void setSelectedKey(SelectedKey selectedKey) {
-        this.selectedKey = selectedKey;
     }
 
     public void exit() {

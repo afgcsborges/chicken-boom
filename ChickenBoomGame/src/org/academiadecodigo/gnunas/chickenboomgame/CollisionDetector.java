@@ -1,6 +1,5 @@
 package org.academiadecodigo.gnunas.chickenboomgame;
 
-import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Obstacle;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.GameObject;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.Steroid;
 import org.academiadecodigo.gnunas.chickenboomgame.gameobjects.SteroidType;
@@ -48,9 +47,7 @@ public class CollisionDetector {
 
             if (object instanceof Steroid) {
 
-                GameObject steroids = (Steroid) object;
-
-                if(checkRange(steroids, player) || checkRange(player, steroids) ) {
+                if(checkRange(object, player) || checkRange(player, object) ) {
 
                     Steroid steroid = (Steroid) object;
                     if (steroid.isUsed()){
@@ -86,9 +83,7 @@ public class CollisionDetector {
                 continue;
             }
 
-            GameObject obstacle = (Obstacle) object;
-
-            if (checkRange(obstacle, player)|| checkRange(player, obstacle)) {
+            if (checkRange(object, player) || checkRange(player, object)) {
 
                 player.setCrashed();
             }
