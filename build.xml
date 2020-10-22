@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="chicken-boom" default="jarfile">
+<project name="ChickenBoom" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
