@@ -91,7 +91,7 @@ public class GameEngine {
         long loopStart = System.currentTimeMillis();
         long loopEnd = System.currentTimeMillis();
 
-        Sound sound = new Sound("resources/Sounds/bgm/chickenboombgm.wav");
+        Sound sound = new Sound("/resources/sound/chickenboombgm.wav");
         sound.play(true);
 
         while (!gameOver()) {

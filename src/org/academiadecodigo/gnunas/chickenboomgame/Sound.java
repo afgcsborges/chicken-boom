@@ -3,18 +3,19 @@ package org.academiadecodigo.gnunas.chickenboomgame;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class Sound {
 
     private Clip clip;
+    private URL soundURL;
 
     private File file;
 
 
     public Sound(String path) {
 
-       file = new File(path);
-       initClip();
+       initClip(path);
 
     }
 
@@ -40,13 +41,23 @@ public class Sound {
         clip.loop(times);
     }
 
-    private void initClip() {
+    private void initClip(String path) {
+
+        soundURL = Sound.class.getResource(path);
+        AudioInputStream inputStream = null;
 
         try {
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(file);
 
+            if (soundURL == null) {
+                path = path.substring(1);
+                File file = new File(path);
+                soundURL = file.toURI().toURL();
+            }
+
+            inputStream = AudioSystem.getAudioInputStream(soundURL);
             clip = AudioSystem.getClip();
             clip.open(inputStream);
+
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
             System.err.println(ex.getMessage());
         }
