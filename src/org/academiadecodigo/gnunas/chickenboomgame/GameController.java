@@ -80,15 +80,21 @@ public class GameController implements KeyboardHandler {
         }
         if (gameEngine.gameState == GameState.GAMEOVER) {
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER) {
+                gameEngine.playBokBok();
                 gameEngine.gameState = GameState.PLAYING;
             }
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_ESC) {
+                gameEngine.playBokBok();
                 gameEngine.gameState = GameState.MAIN_MENU;
             }
         }
         if (gameEngine.gameState == GameState.MAIN_MENU) {
+
             if ((keyboardEvent.getKey() == KeyboardEvent.KEY_ENTER)) {
+
+                gameEngine.playBokBok();
+
                 if (gameEngine.selectedKey == GameEngine.SelectedKey.START) {
                     gameEngine.gameState = GameState.PLAYING;
                 }
@@ -107,10 +113,14 @@ public class GameController implements KeyboardHandler {
             }
         }
         if (gameEngine.gameState == GameState.INSTRUCTIONS) {
+
+            gameEngine.playBokBok();
+
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_ESC ) {
                 gameEngine.gameState = GameState.MAIN_MENU;
                 gameEngine.selectedKey = GameEngine.SelectedKey.INSTRUCTION;
             }
+
         }
     }
 

@@ -38,6 +38,7 @@ public class GameEngine {
         Picture arrow = new Picture(850, 270, "resources/images/menus/pointer.png");
         arrow.draw();
         SelectedKey currentKey = selectedKey;
+        Sound menuSelection = new Sound("/resources/sound/selectmenusfx.wav");
 
         while (gameState != GameState.PLAYING) {
 
@@ -45,16 +46,20 @@ public class GameEngine {
                 if (selectedKey == SelectedKey.START) {
                     arrow.delete();
                     arrow = new Picture(850, 270, "resources/images/menus/pointer.png");
+                    menuSelection.play(true);
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.INSTRUCTION) {
                     arrow.delete();
                     arrow = new Picture(850, 410, "resources/images/menus/pointer.png");
+                    menuSelection.play(true);
+
                     arrow.draw();
                 }
                 if (selectedKey == SelectedKey.EXIT) {
                     arrow.delete();
                     arrow = new Picture(850, 550, "resources/images/menus/pointer.png");
+                    menuSelection.play(true);
                     arrow.draw();
                 }
             }
@@ -78,6 +83,11 @@ public class GameEngine {
 
         field.getField().load("resources/images/newgamearena.png");
 
+        Sound battleBGM = new Sound("/resources/sound/chickenboombgm.wav");
+
+        Thread.sleep(100);
+        battleBGM.play(true);
+
         int levelController = 0;
         int currentLevel = 0;
         gameObjects = new LinkedList<>();
@@ -90,9 +100,6 @@ public class GameEngine {
         Thread.sleep(2000);
         long loopStart = System.currentTimeMillis();
         long loopEnd = System.currentTimeMillis();
-
-        Sound sound = new Sound("/resources/sound/chickenboombgm.wav");
-        sound.play(true);
 
         while (!gameOver()) {
 
@@ -121,14 +128,15 @@ public class GameEngine {
         gameState = GameState.GAMEOVER;
 
         showResult();
-        sound.stop();
+        new Sound("/resources/sound/deathsfx.wav").play(true);
+        battleBGM.stop();
 
         while (gameState == GameState.GAMEOVER) {
             Thread.sleep(50);
         }
         if (gameState == GameState.PLAYING){
 
-            sound.stop();
+            battleBGM.stop();
 
             player1.hide();
             player2.hide();
@@ -141,7 +149,7 @@ public class GameEngine {
         }
         if (gameState == GameState.MAIN_MENU) {
 
-            sound.stop();
+            battleBGM.stop();
 
             player1.hide();
             player2.hide();
@@ -233,6 +241,8 @@ public class GameEngine {
 
     public void explode() throws InterruptedException {
 
+        new Sound("/resources/sound/explosionsfx.wav").play(true);
+
         if (player1.isCrashed() && player2.isCrashed()){
 
             Picture explosionP1 = new Picture(player1.getX()-25,player1.getY()-50,"resources/images/explosion/0.png");
@@ -287,6 +297,11 @@ public class GameEngine {
         }
         explosionP2.delete();
 
+    }
+
+    public void playBokBok(){
+
+        new Sound("/resources/sound/chosemenusfx.wav").play(true);
     }
 
 }
