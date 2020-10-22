@@ -117,6 +117,9 @@ public class GameEngine {
 
         }
         gameState = GameState.GAMEOVER;
+
+        explode();
+
         showResult();
         sound.stop();
 
@@ -228,7 +231,47 @@ public class GameEngine {
         gameObjects.clear();
     }
 
-    public void explode(){
+    public void explode() throws InterruptedException {
+
+        if (player1.isCrashed() && player2.isCrashed()){
+
+            Picture explosionP1 = new Picture(player1.getX()-25,player1.getY()-50,"resources/images/explosion/0.png");
+            Picture explosionP2 = new Picture(player2.getX()-25,player2.getY()-50,"resources/images/explosion/0.png");
+            explosionP1.draw();
+
+            for(int i = 1 ; i < 48 ; i++){
+                explosionP1.load("resources/images/explosion/" + i + ".png");
+                explosionP2.load("resources/images/explosion/" + i + ".png");
+
+                Thread.sleep(42);
+            }
+            explosionP1.delete();
+            explosionP2.delete();
+            return;
+        }
+
+        if(player1.isCrashed()){
+            Picture explosionP1 = new Picture(player1.getX()-25,player1.getY()-50,"resources/images/explosion/0.png");
+            explosionP1.draw();
+
+            for(int i = 1 ; i < 48 ; i++){
+                explosionP1.load("resources/images/explosion/" + i + ".png");
+
+                Thread.sleep(42);
+            }
+            explosionP1.delete();
+            return;
+        }
+
+        Picture explosionP2 = new Picture(player2.getX()-25,player2.getY()-50,"resources/images/explosion/0.png");
+        explosionP2.draw();
+
+        for(int i = 1 ; i < 48 ; i++){
+            explosionP2.load("resources/images/explosion/" + i + ".png");
+
+            Thread.sleep(42);
+        }
+        explosionP2.delete();
 
     }
 
