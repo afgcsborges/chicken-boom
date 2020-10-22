@@ -25,7 +25,7 @@ Java I/O streams<br>
 
 # Chicken-Boom
 
-After a devastating fire, many families lost their production fields, running out their suplies. A rich and greedy Farmer provided a portion of his fields for each family in exchange of some of the productions percentage. Since he was a fanatic of chicken fights he demanded a Survivor Fight between two chickens which were provided randomly by the families. The fight occurs in an arena where fire balls are shot and the chickens need to escape. The battle ends when one chicken is shot down. In the meanwhile the Farmer plants some Power Ups that can be used by the first chicken that catches it.
+After a devastating fire in HashLand, many families lost their production fields, running out their suplies. A rich and greedy Farmer provided a portion of his fields for each family in exchange of some of the productions percentage. Since he was a fanatic of chicken fights he demanded a Survivor Fight between two chickens which were provided randomly by the families. The fight occurs in an arena where fire balls are shot and the chickens need to escape. The battle ends when one chicken is shot down. In the meanwhile the Farmer plants some Power Ups that can be used by the first chicken that catches it.
 
 As punishment the family who owns the loser chicken loses the access to the field until the next fight. The loser chicken is served as a banquet for the Farmer.
 
