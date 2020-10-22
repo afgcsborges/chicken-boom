@@ -116,7 +116,7 @@ public class GameEngine {
             loopEnd = System.currentTimeMillis();
         }
 
-        //explode();
+        explode();
 
         gameState = GameState.GAMEOVER;
 
@@ -243,6 +243,10 @@ public class GameEngine {
             for(int i = 1 ; i < 48 ; i++){
                 explosionP1.load("resources/images/explosion/" + i + ".png");
                 explosionP2.load("resources/images/explosion/" + i + ".png");
+                if(i == 29) {
+                    player2.hide();
+                    player1.hide();
+                }
 
                 Thread.sleep(42);
             }
@@ -258,6 +262,10 @@ public class GameEngine {
             for(int i = 1 ; i < 48 ; i++){
                 explosionP1.load("resources/images/explosion/" + i + ".png");
 
+                if(i == 29) {
+                    player1.hide();
+                }
+
                 Thread.sleep(42);
             }
             explosionP1.delete();
@@ -269,6 +277,11 @@ public class GameEngine {
 
         for(int i = 1 ; i < 48 ; i++){
             explosionP2.load("resources/images/explosion/" + i + ".png");
+
+            if(i == 29) {
+
+                player2.hide();
+            }
 
             Thread.sleep(42);
         }
